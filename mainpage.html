@@ -8,13 +8,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="HSNP.css">
+  <link rel="stylesheet" href="project.css">
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) 　git test*/
     .row.content {height: 1500px}
     
     /* Set gray background color and 100% height */
     .sidenav {
-      background-color: lightblue;
+       
+       background-color: #f1f1f1;
       height: 100%;
     }
     
@@ -36,13 +38,34 @@
   </style>
 </head>
 <body>
-
+<div class="row top_color top">
+    <div class="col-sm-3 "><h2>hsnp</h2></div>
+     <div class="col-sm-5 ">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Blog..">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+        </div>
+    </div>
+    <div class="col-sm-4 ">
+        <div class="row ">
+                <div class="col-sm-2 ">
+                <img src="c.jpg" class="img-circle" height="60" width="60" alt="Avatar" padding-top = 10px>
+                </div>
+                <h2>little bear</h2>
+        </div>
+      
+    </div>
+   
+</div>
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
-      <h2>JHNP</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1"><h3>Home</h3></a></li>
+      <ul class="nav nav-pills nav-stacked word">
+        <li><a href="#section1"><h3>Home</h3></a></li>
         <li><a href="#section2"><h3>國文</h3></a></li>
         <li><a href="#section3"><h3>英文</h3></a></li>
         <li><a href="#section3"><h3>數學</h3></a></li>
@@ -55,17 +78,10 @@
         <li><a href="#section3"><h3>生物</h3></a></li>
         <li><a href="#section3"><h3>其他</h3></a></li>
       </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
+     
     </div>
 
-    <div class="col-sm-9 sidenav">
+    <div class="col-sm-9 ">
    	<table border="3" >
    <tbody>
      <tr>	
@@ -101,9 +117,6 @@
   </div>
 </div>
 
-<footer class="container-fluid">
-  <p>Footer Text</p>
-</footer>
 
 </body>
 </html>
