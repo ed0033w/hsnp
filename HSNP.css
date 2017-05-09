@@ -1,6 +1,6 @@
 .button {
   display: inline-block;
-  border-radius: 50%;
+  border-radius: 2px;
   background-color: dodgerblue;
   border: none;
   color: #FFFFFF;
