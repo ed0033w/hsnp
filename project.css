@@ -1,0 +1,39 @@
+body {
+    
+}
+.top{
+  padding-top:26px; 
+ 
+  padding-bottom:26px; 
+    
+   
+    
+}
+
+
+.col-5{width:41.66666667%}
+.col-4{width:33.33333333%}
+.col-3{width:25%}
+
+.col-3,.col-4,.col-5,{
+    float:left}
+
+.top_color{
+    color:#fff!important;background-color:#009688!important
+}
+.content{
+    text-align: center;
+}
+.article {
+    
+    width: 280px;
+    background:#f2f2f2;
+    vertical-align: middle;
+}
+#search-box {
+  font-size: 13px;
+  width: 300px;
+  background: #E6E6E6 url('search.gif') no-repeat 3px 3px;
+  padding-top:5px;
+   padding-bottom:4px; 
+}
