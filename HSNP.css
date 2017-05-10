@@ -38,6 +38,14 @@
   right: 0;
 }
 
+.question{
+  margin-left: 20px;
+  width: 90%;
+  table-layout: fixed;
+  overflow: hidden;
+  
+}
+
 .pic{
   margin: 60px;
   border-radius: 30px;
@@ -78,3 +86,4 @@
   margin-top: 30px;
   margin-left: 60px; 
 }
+
