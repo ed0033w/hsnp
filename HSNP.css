@@ -37,6 +37,44 @@
   opacity: 1;
   right: 0;
 }
-.word{
-   color:#fff;
+
+.pic{
+  margin: 60px;
+  border-radius: 30px;
+}
+
+.ability{
+  margin-top: -55px;
+  margin-left: 65px; 
+  border-radius: 30px;
+}
+
+.ability_value{
+  margin-top: -63px;
+  margin-left: 160px;
+}
+
+.personaldata{
+  margin: 60px;
+  width: auto;
+  font-size:2em;
+  font-family:DFKai-sb;
+}
+
+.proud{
+  width: 50px;
+  margin-top: -30px;
+  float: left;
+}
+.proudname{
+  margin-top: -20px;
+  margin-left: -5px;
+  float: left;
+  font-size:2em;
+  font-family:DFKai-sb;
+}
+
+.note{
+  margin-top: 30px;
+  margin-left: 60px; 
 }
