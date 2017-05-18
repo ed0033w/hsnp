@@ -87,3 +87,9 @@
   margin-left: 60px; 
 }
 
+.menu{
+  display: inline-block;
+  border-radius: 2px;
+  background-color:#009688;
+  border: 0px;
+}
