@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Firebase Authentication SDK 電子郵件/密碼登入</title>
+    <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+    <script>
+        // 初始化 Firebase
+        var config = {
+           apiKey: "AIzaSyCpeR9hB8j9pjou-7GnlU8wPld5E5-iMzo",
+           authDomain: "authtest-d8ee1.firebaseapp.com",
+           databaseURL: "https://authtest-d8ee1.firebaseio.com",
+           projectId: "authtest-d8ee1",
+           storageBucket: "authtest-d8ee1.appspot.com",
+           messagingSenderId: "388882172784"
+        };
+        firebase.initializeApp(config);
+    </script>
+  </head>
+  <body>
+    <h1>Firebase Authentication SDK 電子郵件/密碼登入</h1>
+        <h2>註冊</h2>
+            <lable for="account"></lable>
+            <input id="account" type="text">
+            <lable for="pwd"></lable>
+            <input id="pwd" type="password">
+            <button type="submit" id="registerSmtBtn">Signup</button>
+
+        <div id = "loginDiv">
+        <h2>登入</h2>
+            <lable for="accountL"></lable>
+            <input id="accountL" type="text">
+            <lable for="pwdL"></lable>
+            <input id="pwdL" type="password">
+            <button type="submit" id="loginSmtBtn">Login</button>
+        </div>
+        <div id = "logoutDiv">
+        <h2 id = "message">hi</h2>
+        <h2>登出</h2>
+            <button id="signoutSmtBtn">Signout</button>
+        </div>
+
+        <h2>電子郵件驗證</h2>
+            <button id="verifyBtn">Verify</button>
+
+        <h2>更改密碼</h2>
+            <label for="chgPwd">Email</label>
+            <input id="chgPwd" type="text">
+            <button id="chgPwdBtn">ChangePwd</button>
+
+        <h2>更改名字</h2>
+            <label for="chgName">名字</label>
+            <input id="chgName" type="text">
+            <button id="chgNameBtn">ChangeName</button>
+
+        <h2>Facebook登入</h2>
+            <button id="fbLoginBtn">FB Login</button>
+
+        <script>
+
+            //signup
+            var account = document.getElementById("account");
+            var pwd = document.getElementById("pwd");
+            var registerSmtBtn = document.getElementById("registerSmtBtn");
+            registerSmtBtn.addEventListener("click", function(){
+                console.log(account.value);
+                firebase.auth().createUserWithEmailAndPassword(account.value, pwd.value).catch(function(error) {
+                // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMsg = error.message;
+                console.log(errorMsg);
+                });
+            },false);
+
+            //login
+            var accountL = document.getElementById("accountL");
+            var pwdL = document.getElementById("pwdL");
+            var loginSmtBtn = document.getElementById("loginSmtBtn");
+            loginSmtBtn.addEventListener("click",function(){
+	            console.log(accountL.value);
+	            firebase.auth().signInWithEmailAndPassword(accountL.value, pwdL.value).catch(function(error) {
+  	                // Handle Errors here.
+  	                var errorCode = error.code;
+  	                var errorMessage = error.message;
+  	                console.log(errorMessage);
+                })
+            },false);
+
+            //confirm login status
+            var user;
+            firebase.auth().onAuthStateChanged(function(user) {
+
+                function funcChgName(){
+                        user.updateProfile({
+                            displayName: chgName.value
+                        }).then(function() {
+                            // Update successful.
+                            document.getElementById("message").textContent = "Hello, " + user.displayName + ",email: " + user.email;
+                            console.log("修改名字成功 "+chgName.value);
+                        }, function(error) {
+                            // An error happened.
+                            console.log("修改名字失敗");
+                        });
+                }
+
+                var chgNameBtn = document.getElementById("chgNameBtn");
+
+                if (user) {
+                    user = user;
+                    document.getElementById("loginDiv").style.display = "none";
+                    document.getElementById("logoutDiv").style.display = "block";
+                    document.getElementById("message").textContent = "Hello, " + user.displayName + ",email: " + user.email;
+                    console.log(user);
+
+                    chgNameBtn.addEventListener("click",funcChgName,false);
+
+                } else {
+                    document.getElementById("loginDiv").style.display = "block";
+                    document.getElementById("logoutDiv").style.display = "none";
+  	                user = null;
+                    console.log("User is not logined yet.");
+                    
+                    chgNameBtn.removeEventListener("click",funcChgName,false);
+                }
+            });
+
+            //sign out
+            var signoutSmtBtn = document.getElementById("signoutSmtBtn");
+            signoutSmtBtn.addEventListener("click",function(){
+                firebase.auth().signOut().then(function() {
+                console.log("User sign out!");
+                }, function(error) {
+                    console.log("User sign out error!");
+                })
+            },false);
+
+            //send verify mail
+            var verifyBtn = document.getElementById("verifyBtn");
+            verifyBtn.addEventListener("click",function(user){
+                user.sendEmailVerification().then(function() {
+                    console.log("驗證信寄出");
+                }, function(error) {
+                    console.error("驗證信錯誤");
+                });
+            },false);
+
+            //change Password
+            var chgPwd = document.getElementById("chgPwd");
+                var chgPwdBtn = document.getElementById("chgPwdBtn");
+                chgPwdBtn.addEventListener("click",function(){
+                firebase.auth().sendPasswordResetEmail(chgPwd.value).then(function() {
+                    // Email sent.
+
+                    console.log("更改密碼Email已發送");
+                    chgPwd.value = "";
+                }, function(error) {
+                // An error happened.
+
+                    console.error("更改密碼",error);
+                });
+            },false);
+
+            
+       
+        </script>
+  </body>
+</html>
