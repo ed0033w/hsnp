@@ -4,6 +4,7 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -42,9 +43,10 @@
 <body>
 
 <div class="row top_color top">
-    <div class="col-sm-3 "><h2>hsnp</h2></div>
+    <div class="col-sm-1"><button class="menu" onclick="open_menu()"><h2>☰</h2></button></div>
+    <div class="col-sm-2"><h2>hsnp</h2></div>
      <div class="col-sm-5 ">
-        <div class="input-group">
+        <div class="input-group top_searchbox">
             <input type="text" class="form-control" placeholder="Search Blog..">
             <span class="input-group-btn">
             <button class="btn btn-default" type="button">
@@ -67,24 +69,31 @@
 
 <div class="container-fluid">
   <div class="row content">
-    <div class="col-sm-3 sidenav">
-     
-  
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1"><h3>Home</h3></a></li>
-        <li><a href="#section2"><h3>國文</h3></a></li>
-        <li><a href="#section3"><h3>英文</h3></a></li>
-        <li><a href="#section3"><h3>數學</h3></a></li>
-        <li><a href="#section3"><h3>歷史</h3></a></li>
-        <li><a href="#section3"><h3>地理</h3></a></li>
-        <li><a href="#section3"><h3>物理</h3></a></li>
-        <li><a href="#section3"><h3>化學</h3></a></li>
-        <li><a href="#section3"><h3>地科</h3></a></li>
-        <li><a href="#section3"><h3>公民</h3></a></li>
-        <li><a href="#section3"><h3>生物</h3></a></li>
-        <li><a href="#section3"><h3>解題區</h3></a></li>
-      </ul><br>
-      
+  <div class=" w3-sidebar w3-bar-block w3-card-2  w3-xlarge w3-animate-left sidenav" style="display:none;z-index:2;width:20%;min-width:300px" id="mySidebar">
+      <ul class="nav nav-pills nav-stacked word">
+        <button style="border:none; background-color:		#f1f1f1; color:black;" onclick="close_menu()">╳</button>
+        <li><a href="#section2"><h3><font color="#00968">首頁</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">個人介面</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">我要發問</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">登出</font></h3></a></li>
+      </ul><br>  
+    </div>
+    <div class="col-md-12" style="background-color:#AAAAAA;"> 
+      <ul class="nav navbar-nav" style="font-size: 20px; width:100%;">
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">全部</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">國文</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">英文</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">數學</a></li>        
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">歷史</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">地理</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">物理</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">化學</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">地科</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">公民</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">生物</a></li>
+        <li style="width:12%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">其他題庫</a></li>
+
+      </ul>
       
     </div>
 
@@ -131,5 +140,15 @@
     </div>
   </div>
 </div>
+<script>
+// Script to open and close sidebar
+function open_menu() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+ 
+function close_menu() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+</script>
 </body>
 </html>

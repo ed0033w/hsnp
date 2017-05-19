@@ -34,3 +34,99 @@ body {
    
     
 }
+.button {
+  display: inline-block;
+  border-radius: 2px;
+  background-color: dodgerblue;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+.button:hover {background-color: blue}
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.question{
+  margin-left: 20px;
+  width: 90%;
+  table-layout: fixed;
+  overflow: hidden;
+  
+}
+
+.pic{
+  margin: 60px;
+  border-radius: 30px;
+}
+
+.ability{
+  margin-top: -55px;
+  margin-left: 65px; 
+  border-radius: 30px;
+}
+
+.ability_value{
+  margin-top: -63px;
+  margin-left: 160px;
+}
+
+.personaldata{
+  margin: 60px;
+  width: auto;
+  font-size:2em;
+  font-family:DFKai-sb;
+}
+
+.proud{
+  width: 50px;
+  margin-top: -30px;
+  float: left;
+}
+.proudname{
+  margin-top: -20px;
+  margin-left: -5px;
+  float: left;
+  font-size:2em;
+  font-family:DFKai-sb;
+}
+
+.note{
+  margin-top: 30px;
+  margin-left: 60px; 
+}
+
+.menu{
+  display: inline-block;
+  border-radius: 2px;
+  background-color:#009688;
+  border: 0px;
+}
+
