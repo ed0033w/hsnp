@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Login form</title>
+  <head>
 
-  <link rel="stylesheet" href="login.css">
- 
-
+    <meta charset="UTF-8">
+    <title>Login form</title>
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBZWQTLkUTg91JtXHt_npsAPIHbM1dm7_o",
+        authDomain: "hsnp-55606.firebaseapp.com",
+        databaseURL: "https://hsnp-55606.firebaseio.com",
+        projectId: "hsnp-55606",
+        storageBucket: "hsnp-55606.appspot.com",
+        messagingSenderId: "912083360147"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <link rel="stylesheet" href="login.css">
   
+
+    
 
 </head>
 
@@ -15,24 +28,62 @@
   <div class="login">
     <h1>HSNP</h1>
 
-    <form class="form">
+    <!--<button type="submit" id="loginSmtBtn">Login</button>-->
+
+    <div class="form">
 
       <p class="field">
-        <input type="text" name="login" placeholder="Username" required/>
+
+        <!--<input type="text" id="accountL" name="login" placeholder="Username" required/>-->
+        <lable for="accountL"></lable>
+        <input id="accountL" type="text">
         <i class="fa fa-user"></i>
       </p>
 
       <p class="field">
-        <input type="password" name="password" placeholder="Password" required/>
+        <!--<input type="password" id="pwdL" name="password" placeholder="Password" required/>-->
+        <lable for="pwdL"></lable>
+        <input id="pwdL" type="password">
         <i class="fa fa-lock"></i>
       </p>
 
-      <p class="submit"><input type="submit" name="sent" value="SignIn"></p>
-      <p class="submit"><input type="submit"  value="SignUp"></p>
+      <p class="submit"><input type="submit" id="loginSmtBtn" name="sent" value="SignIn"></p>
+      <!--跳轉網頁-->
+      <p class="submit"><input type="submit" value="SignUp" onclick="window.location.href = 'signup.html';"></p>
 
     </form>
   </div> <!--/ Login-->
 
+
+  <script>
+  //login
+  var accountL = document.getElementById("accountL");
+  var pwdL = document.getElementById("pwdL");
+  var loginSmtBtn = document.getElementById("loginSmtBtn");
+  loginSmtBtn.addEventListener("click",function(){
+    console.log(accountL.value);
+    firebase.auth().signInWithEmailAndPassword(accountL.value, pwdL.value).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(accountL.value +"  "+ pwdL.value);
+          console.log(errorMessage);
+      })
+  },false);
+
+
+  //confirm login status
+  var user;
+  firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        window.location.href = 'mainpage.html';
+        console.log(user);
+      } else {
+        console.log("User is not logined yet.");
+      }
+  });
+  </script>
+  
 
    
   
