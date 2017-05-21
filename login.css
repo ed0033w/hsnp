@@ -96,7 +96,10 @@ body {
   color: #ded9cf;
   font-family: 'Open Sans';
 }
-
+::-webkit-select-placeholder {
+  color: black;
+  font-family: 'Open Sans';
+}
 :-moz-placeholder {
   color: #ded9cf !important;
   font-family: 'Open Sans';
@@ -116,26 +119,27 @@ body {
   color: #777;
   transition: color 0.3s ease-out;
 }
+.form select{
+  font-family: 'Open Sans', Calibri, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+    width: 200px;
+  height: 24px;
+  color: #676056;
+  border: none;
+  background: #f7f3eb;
+  color: #777;
+  transition: color 0.3s ease-out;
+}
 
-.form input[type=text] {
+.form input[type=text], input[type=password], select {
   margin-bottom: 15px;
 }
 
-.form input[type=text]:hover ~ i,
-.form input[type=password]:hover ~ i {
-  color: #27ae60;
-}
 
-.form input[type=text]:focus ~ i,
-.form input[type=password]:focus ~ i {
-  color: #27ae60;
-}
 
-.form input[type=text]:focus,
-.form input[type=password]:focus,
-.form button[type=submit]:focus {
-  outline: none;
-}
+
 
 .form input[type=submit] {
   margin-top: 15px;
@@ -161,4 +165,65 @@ body {
   box-shadow: inset 0px 46px 0px 0px #1abc9c;
   
 }
+.signup {
+  position: relative;
+  margin: 100px auto;
+  width: 370px;
+  height: 600px;
+  background: white;
+  border-radius: 3px;
+}
+
+.signup:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.signup h1 {
+  line-height: 55px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  background: #1abc9c;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.signup .submit {
+  text-align: center;
+}
+.signup p:first-child {
+  margin-top: 30px;
+}
+.signup p .remember {
+  float: left;
+}
+.signup p .remember label {
+  color: #a7a599;
+  font-size: 12px;
+  cursor: pointer;
+}
+.signup p .forgot {
+  float: right;
+  margin-right: 50px;
+}
+.signup p .forgot a {
+  color: #a7a599;
+  font-size: 12px;
+  text-decoration: none;
+  font-style: italic;
+  transition: all 0.3s ease-out;
+}
+.signup p .forgot a:hover {
+  color: #f2672e;
+}
+
 

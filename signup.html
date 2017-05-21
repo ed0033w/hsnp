@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login form</title>
+
+  <link rel="stylesheet" href="login.css">
+ 
+
+ 
+
+</head>
+
+<body>
+     
+  <div class="signup">
+    <h1>HSNP</h1>
+
+    <form class="form" action="save.asp" name ="form1" onSubmit="return check();">
+      
+
+      <p class="field">
+        <input type="text" name="login" placeholder="Username" required/>
+        <i></i>
+      </p>
+
+      <p class="field">
+        <input type="password" name="password" placeholder="Password" required/>
+        <i></i>
+      </p>
+
+      <p class="field">
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required/>
+        <i></i>
+      </p>
+
+      <p class="field">
+      <input type="text" name="name" placeholder="Name" required/>
+      <i></i>
+      </p>
+
+      <p class="field">
+        <input type="text" name="email" placeholder="email" required/>
+        <i></i>
+      </p>
+
+      <p class="field">年級</p>
+      <p  class="field">
+      <select   >
+    　<option value="seniorOne">高一</option>
+    　<option value="seniorTwo">高二</option>
+    　<option value="seniorThree">高三</option>
+      </select>
+      
+      </p>
+
+      <p class="field">擅長科目</p>
+      <p class="field">
+      <select >
+    　<option value="ch">國文</option>
+    　<option value="math">數學</option>
+    　<option value="eng">英文</option>
+      <option value="chemical">化學</option>
+      <option value="physics">物理</option>
+      <option value="bio">生物</option>
+      <option value="earthscience">地科</option>
+      <option value="geo">地理</option>
+      <option value="history">歷史</option>
+      <option value="gonmin">公民</option>
+      </select>
+    
+      </p>
+
+      <p class="submit"><input type="submit"  value="Register"></p>
+
+    </form>
+  </div> <!--/ Login-->
+
+ <script language="javascript"><!-- 
+	function check() 
+	{ 
+	if ((document.form1.elements[1].value)!=(document.form1.elements[2].value)){ 
+	alert("確認密碼不一致"); 
+	return false; 
+	} 
+	return true; 
+	} 
+	</script> 
+   
+  
+  
+</body>
+</html>
