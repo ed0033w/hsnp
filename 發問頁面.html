@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <title>發問頁面</title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="HSNP.css">
+
+  <link rel="stylesheet" href="project.css">
+
+  <style>
+
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) 　git test*/
+
+    .row.content {height: 1500px}
+
+    
+
+    /* Set gray background color and 100% height */
+
+    .sidenav {
+
+      background-color: 	#AAAAAA;
+
+      color: black;
+
+      height: 100%;
+
+    }
+
+    .li:hover{background-color: black;}
+
+    /* Set black background color, white text and some padding */
+
+    footer {
+
+      background-color: #555;
+
+      color: white;
+
+      padding: 15px;
+
+    }
+
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+
+    @media screen and (max-width: 767px) {
+
+      .sidenav {
+
+        height: auto;
+
+        padding: 15px;
+
+      }
+
+      .row.content {height: auto;} 
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="row top_color top">
+
+    <div class="col-sm-1"><button class="menu" onclick="open_menu()"><h2>☰</h2></button></div>
+
+    <div class="col-sm-2"><h2>請發問</h2></div>
+
+     <div class="col-sm-5 ">
+
+        <div class="input-group top_searchbox">
+
+            <input type="text" class="form-control" placeholder="Search Blog..">
+
+            <span class="input-group-btn">
+
+            <button class="btn btn-default" type="button">
+
+                <span class="glyphicon glyphicon-search"></span>
+
+            </button>
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-4 ">
+
+        <div class="row ">
+
+                <div class="col-sm-2 ">
+
+                <img src="c.jpg" class="img-circle" height="60" width="60" alt="Avatar" padding-top = 10px>
+
+                </div>
+
+                <h2>little bear</h2>
+
+        </div>
+
+      
+
+    </div>
+
+   
+
+</div>
+
+<div class="container-fluid">
+
+  <div class="row content">
+
+    <div class="w3-sidebar w3-bar-block w3-card-2 w3-top w3-xlarge w3-animate-top sidenav" style="display:none;z-index:2;width:20%;min-width:300px" id="mySidebar">
+
+      <ul class="nav nav-pills nav-stacked word">
+
+        <button style="border:none; background-color:		#AAAAAA; color:#00AAAA;" onclick="close_menu()">╳</button>
+
+        <li><a href="#section2"><h3><font color="white">個人介面</font></h3></a></li>
+
+        <li><a href="#section3"><h3><font color="white">尋找問題</font></h3></a></li>
+
+        <li><a href="#section3"><h3><font color="white">我要發問</font></h3></a></li>
+
+        <li><a href="#section3"><h3><font color="white">登出</font></h3></a></li>
+
+      </ul><br>
+
+     
+
+    </div>
+
+    <div class="col-md-12" style="background-color:black;">
+
+      
+
+      <ul class="nav navbar-nav" style="font-size: 20px; width:100%;">
+
+      
+
+
+
+
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA;" >全部</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA;">國文</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA;">英文</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA;">數學</a></li>        
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA;">歷史</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA">地理</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA">物理</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA">化學</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA">地科</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA">公民</a></li>
+
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#00AAAA">生物</a></li>
+
+        <li style="width:12%;text-align:center;"><a href="#" style="color:#00AAAA">其他題庫</a></li>
+
+
+
+      </ul>
+
+      
+
+    </div>
+
+
+
+    <div class="col-md-4 ">	
+
+        <table  border="1">
+
+   		<tr>
+
+        <td><img src="http://gameschool.cc/ugc/img/content/d4/1d/1594.png"></td>
+
+      </tr>
+
+      <tr>
+
+        <td>數學問題:有人會算跟解釋這題嗎?</td>
+
+      </tr>
+
+
+    </table>
+
+    </div>
+
+
+
+    <div class="col-md-4 ">	
+
+   	<table  border="1">
+	<tr>
+
+        <td><img src="http://img.ltn.com.tw/2017/new/jan/21/images/bigPic/600_95.jpg" width="380" height="250"></td>
+
+      </tr>
+
+      <tr>
+
+        <td>國文問題:有人知道這題文言文大概怎麼翻譯和解析?</td>
+
+      </tr>
+
+    </table>
+
+    </div>
+
+
+
+    <div class="col-md-4 ">	
+
+   	<table  border="1">
+
+    </table>
+
+    <tr>
+
+        <td><img src="http://cdn-obs.line-apps.com/line/r/lineq/c/3f092da3-c674-4252-a8ab-37a421ba5dab101a2ft03d5365e" width="380" height="250"></td>
+
+      </tr>
+
+      <tr>
+
+        <td><br>英文問題:這兩題翻譯有無文法上或介係詞錯誤?</td>
+
+      </tr>
+    </table>
+
+    </div>
+
+
+
+    <div class="col-md-4 ">	
+
+   	<table  border="1">
+
+     	<tr>
+
+        	<td><img src="http://img.ltn.com.tw/Upload/liveNews/BigPic/600_1581686_1.jpg" width="380" height="250"></td>
+
+      </tr>
+
+      <tr>
+
+        <td>歷史問題:有人會解釋這一題有關德國的歷史嘛?</td>
+
+      </tr>
+
+    </table>
+
+    </div>
+
+
+
+    <div class="col-md-4 ">	
+
+   	<table  border="1">
+
+      	<tr>
+
+        	<td><img src="http://www.rti.org.tw/cache/material_148491085578282_400x300.jpg" width="380" height="250"></td>
+
+      </tr>
+
+      <tr>
+
+        <td>地理問題:有人對美國製造政策影響什麼區域很了解嗎?</td>
+
+      </tr>
+    </table>
+
+    </div>
+
+
+
+    <div class="col-md-4 ">	
+
+   	<table  border="1">
+
+     	<tr>
+
+        	<td><img src="http://img.ltn.com.tw/Upload/liveNews/BigPic/600_1581686_2.jpg" width="380" height="250"></td>
+ 
+      </tr>
+
+      <tr>
+
+        <td>公民問題:投票選舉問題有誰會?</td>
+
+      </tr>
+
+    </table>
+
+    </div>
+
+
+
+    <div class="col-md-4 ">	
+
+   	<table  border="1">
+
+    	<tr>
+
+        	<td><img src="http://img.mp.itc.cn/upload/20170328/169afb25b8dc44628d140986b06ddfd5_th.jpg" width="380" height="250"></td>
+
+      </tr>
+
+      <tr>
+
+        <td>物理問題:有人對彈簧熟嗎?這題好難</td>
+
+      </tr>
+    </table>
+
+    </div>
+
+
+
+    <div class="col-md-4 ">	
+
+   	<table  border="1">
+
+     	<tr>
+
+        	<td><img src="http://cdn-obs.line-apps.com/line/r/lineq/c/6fa61162-f91f-43dd-8cde-042e4ad46b84841e26t038449a3" width="380" height="250"></td>
+
+      </tr>
+
+      <tr>
+
+        <td>化學問題:有人知道元素表背的口訣嗎?</td>
+
+      </tr>
+
+    </table>
+
+    </div>
+
+   <div class="col-md-4 ">	
+
+   	<table  border="1">
+
+     	<tr>
+
+        	<td><img src="http://www.rensheng2.com/upload/2017/02/28/06a789f2-94fe-4e3f-9fce-c45692bdd475.jpg" width="380" height="250"></td>
+
+      </tr>
+
+      <tr>
+
+        <td>生物問題:有人對遺傳疾病很了解嗎?我都看不懂</td>
+
+      </tr>
+
+    </table>
+
+    </div>
+
+       <div class="col-md-4 ">	
+
+   	<table  border="1">
+
+     	<tr>
+
+        	<td><img src="http://cdn-obs.line-apps.com/line/r/lineq/c/FD0E6B57-3C67-434B-9722-017DF74EC556.f61a57t0535135c/200x200.rf" width="380" height="250"></td>
+
+      </tr>
+
+      <tr>
+
+        <td>地科問題:有人對天文擅長嗎?有哪一個問題是錯的</td>
+
+      </tr>
+
+    </table>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+// Script to open and close sidebar
+
+function open_menu() {
+
+    document.getElementById("mySidebar").style.display = "block";
+
+}
+
+ 
+
+function close_menu() {
+
+    document.getElementById("mySidebar").style.display = "none";
+
+}
+
+</script>
+
+
+
+</body>
+
+</html>
