@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBZWQTLkUTg91JtXHt_npsAPIHbM1dm7_o",
+        authDomain: "hsnp-55606.firebaseapp.com",
+        databaseURL: "https://hsnp-55606.firebaseio.com",
+        projectId: "hsnp-55606",
+        storageBucket: "hsnp-55606.appspot.com",
+        messagingSenderId: "912083360147"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="HSNP.css">
+  <link rel="stylesheet" href="project.css">
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    .roll{
+      overflow-y: scroll;
+    }
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div class="row top_color top">
+    <div class="col-sm-1"><button class="menu" onclick="open_menu()"><h2>☰</h2></button></div>
+    <div class="col-sm-2"><h2>hsnp</h2></div>
+     <div class="col-sm-5 ">
+        <div class="input-group top_searchbox">
+            <input type="text" class="form-control" placeholder="Search Blog..">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+        </div>
+    </div>
+    <div class="col-sm-4 ">
+        <div class="row ">
+                <div class="col-sm-2 ">
+                <img src="c.jpg" class="img-circle" height="60" width="60" alt="Avatar" padding-top = 10px>
+                </div>
+                <h2>little bear</h2>
+        </div>
+      
+    </div>
+   
+</div>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class=" w3-sidebar w3-bar-block w3-card-2  w3-xlarge w3-animate-left sidenav" style="display:none;z-index:2;width:20%;min-width:300px" id="mySidebar">
+      <ul class="nav nav-pills nav-stacked word">
+        <button style="border:none; background-color:		#f1f1f1; color:black;" onclick="close_menu()">╳</button>
+        <li><a href="#section2"><h3><font color="#00968">首頁</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">個人介面</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">我要發問</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">登出</font></h3></a></li>
+      </ul><br>  
+    </div>
+
+    <div class="col-md-12" style="background-color:#AAAAAA;"> 
+      <ul class="nav navbar-nav" style="font-size: 20px; width:100%;">
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">全部</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">國文</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">英文</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">數學</a></li>        
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">歷史</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">地理</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">物理</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">化學</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">地科</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">公民</a></li>
+        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">生物</a></li>
+        <li style="width:12%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">其他題庫</a></li>
+      </ul>
+    </div>
+    <!--個人檔案--> 
+    <img id="bear" src="head.jpg" style="display:none;">
+    <img id="math" src="math.png" style="display:none;">
+    <div style="max-width:1400px; margin-top:80px;">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-4">
+        <div class="w3-card-4 w3-round w3-white">
+          <div class="w3-center" style="padding:10px;">
+            <h3 class="w3-center">My photo</h3>
+            <canvas id="myphoto" width="200" height="300" style="border:1px solid #000000; border-radius:20px; padding:10px;"></canvas>
+          </div>
+        </div>
+        <div class="w3-card-4 w3-round w3-white" style="margin-top:20px;">
+          <div class="" style="padding:10px;">
+            <h3 class="w3-center">Personal Data</h3>
+            <h3>暱稱&nbsp&nbsp小熊</h3>
+            <h3>學校&nbsp&nbsp延平高中</h3>
+            <h3>年級&nbsp&nbsp高二</h3>
+            <h3>擅長&nbsp&nbsp國文、英文、社會</h3>
+            <h3>信箱&nbsp&nbsp1234567890@gmail.com.tw</h3>
+          </div>
+        </div>
+        <div class="w3-card-4 w3-round w3-white" style="margin-top:20px;">
+          <div class="" style="padding:10px;">
+            <h3 class="w3-center">My Pride</h3>
+            <h3>問題&nbsp&nbsp提出21個問題</h3>
+            <h3>解題&nbsp&nbsp已解34個問題</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <!--最近發文-->
+        <div class="w3-card-4 w3-round w3-white">
+          <div class="w3-center" style="padding:10px;">
+            <h3 class="w3-center">Recent Article</h3>
+            <canvas id="art1" width="500" height="300" style="border:1px solid #000000; border-radius:20px; padding:10px;"></canvas>
+          </div>
+        </div>
+        <!--筆記分享-->
+        <div class="w3-card-4 w3-round w3-white" style="margin-top:20px;">
+          <div class="w3-center" style="padding:10px;">
+            <h3 class="w3-center">Note Sharing</h3>
+            <canvas id="note1" width="500" height="300" style="border:1px solid #000000; border-radius:20px; padding:10px;"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+      </div>
+  </div>
+</div>
+<script>
+// Script to open and close sidebar
+function open_menu() {
+    document.getElementById("mySidebar").style.display = "block";
+}
+ 
+function close_menu() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+// Script to put persinal pictures
+window.onload = function() {
+    var c = document.getElementById("myphoto");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("bear");
+    ctx.drawImage(img, 0, 0);
+
+    var e = document.getElementById("art1");
+    var ctx = e.getContext("2d");
+    var a = document.getElementById("math");
+    ctx.drawImage(a, 0, 0);
+
+    var d = document.getElementById("note1");
+    var ctx = d.getContext("2d");
+    var n = new Image();
+    n.src="math.png";
+    ctx.drawImage(n, 0, 0);
+
+}
+</script>
+</body>
+</html>
