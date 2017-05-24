@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Firebase Authentication SDK 電子郵件/密碼登入</title>
     <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
     <script>
     // Initialize Firebase
     var config = {
@@ -56,6 +58,12 @@
         <h2>Facebook登入</h2>
             <button id="fbLoginBtn">FB Login</button>
 
+        <div id='messagesDiv'>
+        <h2>輸入文字</h2>
+            <input type='text' id='nameInput' placeholder='Name'>
+            <input type='text' id='messageInput' placeholder='Message'>
+        </div>
+
         <script>
 
             //signup
@@ -87,7 +95,7 @@
             },false);
 
             //confirm login status
-            var user;
+            var userLogin;
             firebase.auth().onAuthStateChanged(function(user) {
 
                 function funcChgName(){
@@ -106,18 +114,20 @@
                 var chgNameBtn = document.getElementById("chgNameBtn");
 
                 if (user) {
-                    user = user;
+                    userLogin = user;
                     document.getElementById("loginDiv").style.display = "none";
                     document.getElementById("logoutDiv").style.display = "block";
                     document.getElementById("message").textContent = "Hello, " + user.displayName + ",email: " + user.email;
-                    console.log(user);
+                    document.getElementById("messagesDiv").style.display = "block";
+                    console.log(user.displayName);
 
                     chgNameBtn.addEventListener("click",funcChgName,false);
 
                 } else {
                     document.getElementById("loginDiv").style.display = "block";
                     document.getElementById("logoutDiv").style.display = "none";
-  	                user = null;
+                    document.getElementById("messagesDiv").style.display = "none";
+  	                userLogin = null;
                     console.log("User is not logined yet.");
                     
                     chgNameBtn.removeEventListener("click",funcChgName,false);
@@ -137,7 +147,7 @@
             //send verify mail
             var verifyBtn = document.getElementById("verifyBtn");
             verifyBtn.addEventListener("click",function(user){
-                user.sendEmailVerification().then(function() {
+                userLogin.sendEmailVerification().then(function() {
                     console.log("驗證信寄出");
                 }, function(error) {
                     console.error("驗證信錯誤");
@@ -159,6 +169,31 @@
                     console.error("更改密碼",error);
                 });
             },false);
+
+            //send message (Database)
+            var myDataRef = new Firebase('https://hsnp-55606.firebaseio.com');
+            var postRef = myDataRef.child("Message");
+            $('#messageInput').keypress(function (e) {
+                //save message when press enter
+                    if (e.keyCode == 13) {
+                        var name = $('#nameInput').val();
+                        var text = $('#messageInput').val();
+                        postRef.push({name: name, text: text});
+                        $('#messageInput').val('');
+                    }
+                });
+
+                //get message from database, when any message is added
+                postRef.on('child_added', function(snapshot) {
+                    var message = snapshot.val();
+                    displayChatMessage(message.name, message.text);
+                });
+
+                //display the messages
+                function displayChatMessage(name, text) {
+                    $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+                    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+                };
 
             
        
