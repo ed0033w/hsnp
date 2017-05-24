@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyBZWQTLkUTg91JtXHt_npsAPIHbM1dm7_o",
+      authDomain: "hsnp-55606.firebaseapp.com",
+      databaseURL: "https://hsnp-55606.firebaseio.com",
+      projectId: "hsnp-55606",
+      storageBucket: "hsnp-55606.appspot.com",
+      messagingSenderId: "912083360147"
+  };
+  firebase.initializeApp(config);
+  </script>
+  <link rel="stylesheet" href="login.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="HSNP.css">
+  <link rel="stylesheet" href="project.css">
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) 　git test*/
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+<div class="row top_color top">
+    <div class="col-sm-1"><button class="menu" onclick="open_menu()"><h2>☰</h2></button></div>
+    <div class="col-sm-2"><h2>hsnp</h2></div>
+     <div class="col-sm-5 ">
+        <div class="input-group top_searchbox">
+            <input type="text" class="form-control" placeholder="Search Blog..">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+        </div>
+    </div>
+    <div class="col-sm-4 ">
+        <div class="row ">
+                <div class="col-sm-2 ">
+                <img src="c.jpg" class="img-circle" height="60" width="60" alt="Avatar" padding-top = 10px>
+                </div>
+                <h2 id="username"></h2>
+        </div>
+      
+    </div>
+   
+</div>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="w3-sidebar w3-bar-block w3-card-2 w3-top w3-xlarge w3-animate-top sidenav" style="display:none;z-index:2;width:20%;min-width:300px" id="mySidebar">
+      <ul class="nav nav-pills nav-stacked word">
+        <button style="border:none;" onclick="close_menu()">╳</button>
+        <li><a href="#section2"><h3><font color="#00968">國文</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">英文</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">數學</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">歷史</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">地理</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">物理</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">化學</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">地科</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">公民</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">生物</font></h3></a></li>
+        <li><a href="#section3"><h3><font color="#00968">其他</font></h3></a></li>
+      </ul><br>
+     
+    </div>
+
+    <div class="col-sm-12 ">	
+      <div style="text-align:right;"><right><button class="button" style="vertical-align:middle"><span>發問 </span></button></div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+      <tr>
+        <td>請救救我這幾何變態問題</td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+      <tr>
+        <td>拜託大神</td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+      <tr>
+        <td>送經驗救救我</td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4 ">	
+   	<table class="question" border="1">
+      <tr>
+        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4nZj7kT45A0YSdiyMQE2F8n0EEJBp4Lonh_NcLsBUk64_j5v5g"></td>
+      </tr>
+    </table>
+    </div>
+
+      <tr>
+       <td><center><input type="button" value="上一頁" onclick="history.back()">&nbsp&nbsp<input type="button" value="下一頁" onclick="history.forward()"></center></td>
+     </tr>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Script to open and close sidebar
+  function open_menu() {
+      document.getElementById("mySidebar").style.display = "block";
+  }
+  
+  function close_menu() {
+      document.getElementById("mySidebar").style.display = "none";
+  }
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+      var username = document.getElementById("username");
+      if (user) {
+        firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+          console.log(snapshot.val().username);
+          username.textContent = snapshot.val().username;
+        });
+      }
+      else{
+        //window.location.href = 'login.html';
+        username.textContent = "未登入";
+        console.log("User is not logined yet.");
+      }
+  });
+
+
+
+</script>
+
+</body>
+</html>

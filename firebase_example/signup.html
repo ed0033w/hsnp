@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login form</title>
+  <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBZWQTLkUTg91JtXHt_npsAPIHbM1dm7_o",
+        authDomain: "hsnp-55606.firebaseapp.com",
+        databaseURL: "https://hsnp-55606.firebaseio.com",
+        projectId: "hsnp-55606",
+        storageBucket: "hsnp-55606.appspot.com",
+        messagingSenderId: "912083360147"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+  <link rel="stylesheet" href="login.css">
+ 
+
+ 
+
+</head>
+
+<body>
+     
+  <div class="signup">
+    <h1>HSNP</h1>
+
+    <div class="form" action="save.asp" name ="form1" onSubmit="return check();">
+      
+
+      <p class="field">
+        <input type="text" name="username" id="account" placeholder="Email" required/>
+        <i></i>
+      </p>
+
+      <p class="field">
+        <input type="password" name="password" id="pwd" placeholder="Password" required/>
+        <i></i>
+      </p>
+
+      <p class="field">
+        <input type="password" name="confirm_password" id="confirm_pwd" placeholder="Confirm Password" required/>
+        <i></i>
+      </p>
+
+      <p class="field">
+      <input type="text" name="name" id="username" placeholder="Name" required/>
+      <i></i>
+      </p>
+
+      <p class="field">年級</p>
+      <p  class="field">
+      <select  id="grade" >
+    　<option value="seniorOne">高一</option>
+    　<option value="seniorTwo">高二</option>
+    　<option value="seniorThree">高三</option>
+      </select>
+      
+      </p>
+
+      <p class="field">擅長科目</p>
+      <p class="field">
+      <select id="sub">
+    　<option value="ch">國文</option>
+    　<option value="math">數學</option>
+    　<option value="eng">英文</option>
+      <option value="chemical">化學</option>
+      <option value="physics">物理</option>
+      <option value="bio">生物</option>
+      <option value="earthscience">地科</option>
+      <option value="geo">地理</option>
+      <option value="history">歷史</option>
+      <option value="gonmin">公民</option>
+      </select>
+    
+      </p>
+
+      <p class="submit"><input type="submit" id="registerSmtBtn" value="Register"></p>
+      <p class="submit"><input type="submit" onclick="window.location.href = 'login.html';" value="Back to Login"></p>
+
+    </div>
+  </div> <!--/ Login-->
+
+ <script language="javascript"> 
+
+  //signup
+
+    var registerSmtBtn = document.getElementById("registerSmtBtn");
+    registerSmtBtn.addEventListener("click", function(){
+
+      if ((document.getElementById("pwd").value)!=(document.getElementById("confirm_pwd").value)){ 
+        alert("密碼二次確認不一致");
+        return false; 
+      } 
+
+      console.log(account.value);
+      firebase.auth().createUserWithEmailAndPassword(account.value, pwd.value).then(function(){
+      //登入成功後，取得登入使用者資訊
+
+        var account = document.getElementById("account");
+        var pwd = document.getElementById("pwd");
+        var username = document.getElementById("username");
+
+        var grade_id = document.getElementById("grade").selectedIndex;
+        var grade = document.getElementById("grade").options[grade_id].text;
+        console.log(grade)
+        var sub_id = document.getElementById("sub").selectedIndex;
+        var sub = document.getElementById("sub").options[sub_id].text;
+        console.log(sub)
+
+        loginUser = firebase.auth().currentUser;
+        console.log("登入使用者為",loginUser);
+        firebase.database().ref('users/' + loginUser.uid).set({
+          email: loginUser.email,
+          username: username.value,
+          grade : grade,
+          sub : sub
+        });
+        
+        alert("註冊成功\r您的帳號是:"+  loginUser.email +　"\r前往主頁面" );
+
+        setTimeout(function(){
+          window.location.href = 'mainpage-2.html';
+        },1000)
+      
+      }).catch(function(error) {
+      // Handle Errors here.
+        var errorCode = error.code;
+        var errorMsg = error.message;
+        alert("註冊失敗，可能帳號已被註冊");
+        console.log(errorMsg);
+      });
+    },false);
+
+
+	</script> 
+   
+  
+  
+</body>
+</html>
