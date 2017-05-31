@@ -23,21 +23,18 @@
     firebase.initializeApp(config);
     </script>
 
-    <!-- Bootstrap core CSS -->
+   
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <!--external css-->
+   
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         
-    <!-- Custom styles for this template -->
+  <link href="assets/css/fuck.css" rel="stylesheet">
+    
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!--><-->
+   
+ 
     <style> 
    
     input[type=text] {
@@ -64,10 +61,7 @@
   <body>
 
   <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
+    
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
@@ -94,7 +88,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered" id="username"></h5>
+              	  <h5 class="centered" id="username">qww</h5>
               	  	
                   <li class="mt">
                       <a href="">
@@ -148,12 +142,12 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
+      
       <section id="main-content">
           <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i> Blank Page</h3>
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          		  <section class="latest section">
+              <br>
+           <div class="primary col-md-8 col-sm-12 col-xs-12">
+               <section class="latest section">
                     <div class="section-inner">
                         <h2 class="heading">數學&nbsp&nbsp2017/3/24</h2>
                         <div class="content">    
@@ -205,10 +199,60 @@
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
-          		</div>
-          	</div>
-			
-		</section><! --/wrapper -->
+            </div><!--//primary-->
+            <div class="secondary col-md-4 col-sm-12 col-xs-12">
+                 <aside class="info aside section">
+                    <div class="section-inner">
+                        <h2 class="heading sr-only">Basic Information</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>Taipei, Taiwan</li>
+                                <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">littlebear@gmail.com</a></li>
+                                <li><i class="fa fa-pencil"></i><span class="sr-only">Website:</span>國文</li>
+                            </ul>
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </aside><!--//aside-->
+                
+                <aside class="skills aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">My prize</h2>
+                        <div class="content">     
+                            <h3>我愛發問：&nbsp&nbsp53題</h3>
+                            <h3>熱心助人：&nbsp&nbsp34題</h3>   
+                            <br>             
+                            <div class="skillset">
+                               
+                                <div class="item">
+                                    <h3 class="level-title">經驗值:&nbsp&nbsp87%<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to add more info...">Expert</span></h3>
+                                    <div class="level-bar">
+                                        <div class="level-bar-inner" data-level="87%">
+                                        </div>                                      
+                                    </div><!--//level-bar-->                                 
+                                </div><!--//item-->
+                                
+                            </div>              
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </aside><!--//section-->
+                            
+                
+                <aside class="list music aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">My Note</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-book"></i> <a href="#">高二國文第四課</a></li>
+                                <li><i class="fa fa-book"></i> <a href="#">高二數學第三章排列組合</a></li>
+                                <li><i class="fa fa-book"></i> <a href="#">高二數學第四章機率</a></li>
+                                <li><i class="fa fa-book"></i> <a href="#">高二英文第七章文法</a></li>
+                            </ul>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+              
+            </div><!--//secondary-->  
+		</section>
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
@@ -232,19 +276,19 @@
     <script>
  firebase.auth().onAuthStateChanged(function(user) {
         var username = document.getElementById("username");
-        var signoutSmtBtn = document.getElementById("signoutSmtBtn");
+       // var signoutSmtBtn = document.getElementById("signoutSmtBtn");
         if (user) {
             //sign out
-            signoutSmtBtn.addEventListener("click",function(){
+          /*  signoutSmtBtn.addEventListener("click",function(){
                 firebase.auth().signOut().then(function() {
                   console.log("User sign out!");
                   alert("登出成功");
-                  window.location.href = 'mainpage-2.html';
+                  window.location.href = 'blank.html';
                 }, function(error) {
                   console.log("User sign out error!");
                   alert("登出失敗");
                 })
-            },false);
+            },false);*/
 
             firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
             console.log(snapshot.val().username);
@@ -252,9 +296,9 @@
           });
         }
         else{
-          signoutSmtBtn.addEventListener("click",function(){
+         /* signoutSmtBtn.addEventListener("click",function(){
             window.location.href = 'login.html';
-          });
+          });*/
 
           //window.location.href = 'login.html';
           username.textContent = "未登入";
