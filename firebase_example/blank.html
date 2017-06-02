@@ -141,28 +141,47 @@
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-      <!--main content start-->
+      <!-- ******HEADER****** --> 
+      <div class="header2">
+          <div class="container">                       
+              <img id="photo" class="profile-image img-responsive pull-left" src="head.jpg" style="border-radius:20px;" width="200" height="300"/>
+              <div class="profile-content pull-left">
+                  <h1 class="name" id="username">Little Bear</h1>
+                  <h2 class="desc" id="grade">延平高中 二年級</h2>   
+                  <ul class="social list-inline">
+                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>                   
+                      <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="#"><i class="fa fa-github-alt"></i></a></li>                  
+                      <li class="last-item"><a href="#"><i class="fa fa-hacker-news"></i></a></li>                 
+                  </ul> 
+              </div><!--//profile-->
+              <a class="btn btn-cta-primary pull-right" href=""><i class="fa fa-paper-plane"></i> Contact Me</a>              
+          </div><!--//container-->
+      </div><!--//header-->
       
-      <section id="main-content">
+      <!--main content start-->
+      <section id="main-content" style="background-color:lightgray; padding-left:80px; padding-right:80px;">
           <section class="wrapper site-min-height">
               <br>
            <div class="primary col-md-8 col-sm-12 col-xs-12">
-               <section class="latest section">
-                    <div class="section-inner">
-                        <h2 class="heading">數學&nbsp&nbsp2017/3/24</h2>
+               <section  id="article" class="latest section">
+                    <div v-for="card in questionCards" class="section-inner">
+                        <h2 class="heading" id="date" style="float:right;">{{card.date}}</h2>
+                        <h2 class="heading" id="subject">{{card.subject}}</h2>
+
                         <div class="content">    
                                                
                             <div class="item featured text-left">
-                                <h3 class="title" style="color:black;">高二&nbsp&nbsp 三角函數</h3>
+                                <h3 class="title" id="range" style="color:black;">{{card.range}}</h3>
                                 <br>
                                 <div class="">
-                                    <img src="math.png" style="border:0px gray solid;" width="500" height="300">
+                                    <img id="question_img" :src="card.img" style="border:0px gray solid;" width="500" height="300">
                                 </div>
                                     
                                 <div class="desc text-left">
                                     <h3>說明</h3>                                   
-                                    <p>我不能理解第三行算式為什麼會產生cot？</p>
-                                    <p>還有最後為什麼要取那樣的值？</p>
+                                    <p id="question_text">{{card.question_text}}</p>
                                 </div><!--//desc-->                          
                             </div><!--//item-->
                             <hr class="divider" />
@@ -195,8 +214,9 @@
                                     <nobr>89</nobr>
                                 </div><!--//desc-->                          
                             </div><!--//item-->
-                            
+
                         </div><!--//content-->  
+
                     </div><!--//section-inner-->                 
                 </section><!--//section-->
             </div><!--//primary-->
@@ -274,8 +294,19 @@
 
     <!--script for this page-->
     <script>
- firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function(user) {
+        //下面是個人頁面變數，但不包含動態產生的部分，例如文章、筆記等
+        var photo = document.getElementById("photo");
         var username = document.getElementById("username");
+        var grade = document.getElementById("grade");
+        var date = document.getElementById("date");
+        var subject = document.getElementById("subject");
+        var location = document.getElementById("location");
+        var email = document.getElementById("email");
+        var major = document.getElementById("major");
+        var ask = document.getElementById("ask");
+        var answer = document.getElementById("answer");
+        var experience = document.getElementById("experience");
        // var signoutSmtBtn = document.getElementById("signoutSmtBtn");
         if (user) {
             //sign out
@@ -307,6 +338,12 @@
         }
   });
   </script>
+  <!-- 動態產生文章 -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/vue/dist/vue.min.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.min.js"></script>
+    <script type="text/javascript" src="./node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="./personalpage.js"></script>
 
   </body>
 </html>
