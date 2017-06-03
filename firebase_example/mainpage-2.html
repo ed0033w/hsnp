@@ -197,13 +197,21 @@
 
     </div>
     -->
+
 <section id="main-content">
+  <p>
   <section class="wrapper site-min-height">
    <div>
     <div style="text-align:right;">
-      <ul class="nav pull-right top-menu">
+<!--
+
+
             <li><a class="logout" href="發問頁面.html">我要發問</a></li>
-      </ul>
+
+    -->
+    <br>
+        <button type="button" class="btn btn-round btn-info">我要發問</button>
+        <p>
 
     </div>
   </div>
@@ -214,7 +222,9 @@
       <template v-for="(card, index) in questionCards" class="row">
           <div class="col s12">
             <div class="col-md-4">
-            <div class="card" style="background-color:#CCCCCC;">
+              <div class="showback" style="background-color:#CCCCCC;">
+
+            <div class="card" >
               <div class="card-image">
                 <img :src="card.img">
                 <span class="card-title">{{card.title}}</span>
@@ -230,6 +240,7 @@
                 <a>Comment</a>
               </div>
             </div>
+          </div>
           </div>
           </div>
         </template>
@@ -297,6 +308,22 @@
 
 
 </script>
+
+
+<!--common script for all pages-->
+<script src="assets/js/common-scripts.js"></script>
+<!--
+-->
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+<script src="./node_modules/vue/dist/vue.min.js"></script>
+
+<script src="./node_modules/vue-router/dist/vue-router.min.js"></script>
+
+<script type="text/javascript" src="./node_modules/materialize-css/dist/js/materialize.min.js"></script>
+
+<script src="./mainpage-2.js"></script>
+
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
@@ -306,13 +333,5 @@
 <script src="assets/js/jquery.scrollTo.min.js"></script>
 <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
-<!--common script for all pages-->
-<script src="assets/js/common-scripts.js"></script>
-
-<script src="./node_modules/jquery/dist/jquery.min.js"></script>
-<script src="./node_modules/vue/dist/vue.min.js"></script>
-<script src="./node_modules/vue-router/dist/vue-router.min.js"></script>
-<script type="text/javascript" src="./node_modules/materialize-css/dist/js/materialize.min.js"></script>
-<script src="./mainpage-2.js"></script>
 </body>
 </html>
