@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>發問頁面</title>
+
+
+   
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+   
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        
+  <link href="assets/css/fuck.css" rel="stylesheet">
+    
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+   
+ 
+    <style> 
+   
+    input[type=text] {
+        width: 150px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url('searchicon.png');
+        background-position: 10px 10px; 
+        background-repeat: no-repeat;
+        padding: 10px 10px 10px 20px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+    input[type=text]:focus {
+        width: 100%;
+    }
+
+    </style>
+  </head>
+
+  <body>
+
+  <section id="container" >
+    
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>HSNP</b></a>
+            <!--logo end-->
+            
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Logout</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered" id="username">qww</h5>
+              	  	
+                  <li class="mt">
+                      <a href="">
+                          <i class="fa "></i>
+                          <span>mainpage</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="" >
+                          <i class="fa "></i>
+                          <span>personal page</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="" >
+                          <i class="fa"></i>
+                          <span>post question</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="" >
+                          <i class="fa "></i>
+                          <span>subject</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="">國文</a></li>
+                          <li><a  href="">英文</a></li>
+                          <li><a  href="">數學</a></li>
+                          <li><a  href="">物理</a></li>
+                          <li><a  href="">化學</a></li>
+                          <li><a  href="">生物</a></li>
+                          <li><a  href="">地科</a></li>
+                          <li><a  href="">公民</a></li>
+                          <li><a  href="">地理</a></li>
+                          <li><a  href="">歷史</a></li>
+                      </ul>
+                  </li>
+                  <li>
+                  <input type="text" name="search" placeholder="Search..">
+                  </li>
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+          
+      </aside>
+      <!--sidebar end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      	<section id="main-content">
+          
+		<section class="wrapper site-min-height"><br>
+           
+			<div class="primary col-md-12 col-sm-12 col-xs-12">
+              
+				<section class="latest section">
+				  <center><h1><strong>發問頁面</strong></h1>
+					<div class="content">
+						<form>
+
+  <table><br>
+
+	<tr> <td><br>&nbsp<strong>作者:</strong></td>
+
+		<td><br>
+
+		<input type="text"  size=10 placeholder="請輸入您的名字:">
+
+		</td>
+
+	</tr>
+
+	<tr> <td><br>&nbsp<strong>主題:</strong></td>
+
+		<td width=60%><br>
+
+		<input type="text"  size=10 placeholder="請輸入您po文的主題:">
+
+
+
+		</td>
+
+       </tr>
+
+	<tr> <td><br>&nbsp<strong>科目:</strong></td>
+
+<td><br><select size="1" name="Subject">
+
+			<option value="1">國文</option>
+
+			<option value="2">英文</option>
+
+			<option value="3">數學</option>
+
+			<option value="4">地理</option>
+
+			<option value="5">歷史</option>
+
+                        <option value="6">公民</option>
+
+                        <option value="7">物理</option>
+
+                        <option value="8">化學</option>
+
+                        <option value="9">生物</option>
+
+                        <option value="10">地科</option>
+
+                        <option value="11">其他</option>
+
+			</select></td></tr>
+
+<tr> <td><br>&nbsp<strong>問題:</strong></td>
+
+<td><br><textarea rows="4" cols="50"   placeholder="請輸入文字敘述:"></textarea><br><br>請上傳你的圖片:
+<Input Type="File" Name="YouFile"> 
+</div>  <br><br></td></tr>
+
+   
+
+  </table>
+
+
+
+<br>
+
+</form>
+
+
+
+  <tr>
+
+      	 <td><center><input type="button" value="送出" style="color:#003C9D; width:120px;height:40px;border:2px #9999FF dashed ; font-weight:bold; "></center></td>
+
+       </tr>
+    
+					</div>
+					<center>  
+			<div class="section-inner">
+    		
+
+      <!--main content end-->
+     
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+ 
+
+  </body>
+</html>

@@ -28,7 +28,7 @@
    
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         
-  <link href="assets/css/fuck.css" rel="stylesheet">
+    <link href="assets/css/fuck.css" rel="stylesheet">
     
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -141,12 +141,29 @@
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-      <!--main content start-->
+      <!-- ******HEADER****** --> 
+      <br><br>
+     
       
-      <section id="main-content">
+      <!--main content start-->
+      <section id="main-content" style="background-color:lightgray;">
           <section class="wrapper site-min-height">
-              <br>
-           <div class="primary col-md-8 col-sm-12 col-xs-12">
+        <div class="primary col-md-12 col-sm-12 col-xs-12">
+            <section class="latest section">  
+                <div class="container  sections-wrapper section-inner ">                       
+                    <img class="profile-image img-responsive pull-left  col-md-3 col-sm-12 col-xs-12" src="head.jpg" style="border-radius:20px;" width="200" height="300"/>
+                    <div class="profile-content pull-left col-md-8 col-sm-12 col-xs-12">
+                        <h1 class="name ">Little Bear</h1>
+                        <h2 class="desc">延平高中 二年級</h2>   
+                    </div><!--//profile-->
+                 </div><!--//container-->
+            </section>
+        </div>
+
+    
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
                <section class="latest section">
                     <div class="section-inner">
                         <h2 class="heading">數學&nbsp&nbsp2017/3/24</h2>
@@ -251,7 +268,9 @@
                     </div><!--//section-inner-->
                 </aside><!--//section-->
               
-            </div><!--//secondary-->  
+            </div><!--//secondary-->    
+        </div><!--//row-->
+    </div><!--//masonry-->
 		</section>
       </section><!-- /MAIN CONTENT -->
 
@@ -274,8 +293,19 @@
 
     <!--script for this page-->
     <script>
- firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function(user) {
+        //下面是個人頁面變數，但不包含動態產生的部分，例如文章、筆記等
+        var photo = document.getElementById("photo");
         var username = document.getElementById("username");
+        var grade = document.getElementById("grade");
+        var date = document.getElementById("date");
+        var subject = document.getElementById("subject");
+        var location = document.getElementById("location");
+        var email = document.getElementById("email");
+        var major = document.getElementById("major");
+        var ask = document.getElementById("ask");
+        var answer = document.getElementById("answer");
+        var experience = document.getElementById("experience");
        // var signoutSmtBtn = document.getElementById("signoutSmtBtn");
         if (user) {
             //sign out
@@ -307,6 +337,12 @@
         }
   });
   </script>
+  <!-- 動態產生文章 -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/vue/dist/vue.min.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.min.js"></script>
+    <script type="text/javascript" src="./node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="./personalpage.js"></script>
 
   </body>
 </html>
