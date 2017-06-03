@@ -62,10 +62,7 @@
 </head>
 <body>
   <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
+ 
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
@@ -74,18 +71,17 @@
             <a href="index.html" class="logo"><b>HSNP</b></a>
             <!--logo end-->
 
-            <div class="top-menu">
-              <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
-              </ul>
+           <div class="top-menu">
+            	<ul class="nav pull-right top-menu" id="signoutSmtBtn">
+                    <li><a class="logout" href="" id= "logoutDiv">Logout</a></li>
+                    <li><a class="logout" href="" id= "loginDiv">Login</a></li>
+            	</ul>
+                
+                    
+            	
             </div>
         </header>
-      <!--header end-->
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
@@ -95,21 +91,21 @@
                   <h5 class="centered" id="username"></h5>
 
                   <li class="mt">
-                      <a href="">
+                      <a href="mainPage.html">
                           <i class="fa "></i>
                           <span>mainpage</span>
                       </a>
                   </li>
 
-                  <li class="sub-menu">
-                      <a href="" >
+                  <li class="sub-menu" >
+                      <a href="personalPage.html"  id = "personalPage">
                           <i class="fa "></i>
                           <span>personal page</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="" >
+                      <a href="PostQuestion.html" >
                           <i class="fa"></i>
                           <span>post question</span>
                       </a>
@@ -142,66 +138,12 @@
 
       </aside>
 
-  <!--
-<div class="header black-bg">
-    <div class="col-sm-1"><button class="menu" onclick="open_menu()"><h2>☰</h2></button></div>
-    <div class="col-sm-2"><h2>hsnp</h2></div>
-     <div class="col-sm-5 ">
-        <div class="input-group top_searchbox">
-            <input type="text" class="form-control" placeholder="Search Problem..">
-            <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-            </span>
-        </div>
-    </div>
-    <div class="col-sm-4 ">
-        <div class="row ">
-                <div class="col-sm-2 ">
-                <img src="c.jpg" class="img-circle" height="60" width="60" alt="Avatar" padding-top = 10px>
-                </div>
-                <h2 id="username"></h2>
-        </div>
-
-    </div>
-
-</div>
-<div class="container-fluid">
-  <div class="row content">
-    <div class=" w3-sidebar w3-bar-block w3-card-2  w3-xlarge w3-animate-left sidenav" style="display:none;z-index:2;width:20%;min-width:300px" id="mySidebar">
-      <ul class="nav nav-pills nav-stacked word">
-        <button style="border:none; background-color:		#f1f1f1; color:black;" onclick="close_menu()">╳</button>
-        <li><a href="#section2"><h3><font color="#00968">首頁</font></h3></a></li>
-        <li><a href="#section3"><h3><font color="#00968">個人介面</font></h3></a></li>
-        <li><a href="#section3"><h3><font color="#00968">我要發問</font></h3></a></li>
-        <li><a id="signoutSmtBtn"><h3 id="signout"><font color="#00968">登出</font></h3></a></li>
-      </ul><br>
-    </div>
-    <div class="col-md-12" style="background-color:#AAAAAA;">
-      <ul class="nav navbar-nav" style="font-size: 20px; width:100%;">
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">全部</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">國文</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">英文</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">數學</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">歷史</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">地理</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">物理</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">化學</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">地科</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">公民</a></li>
-        <li style="width:8%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">生物</a></li>
-        <li style="width:12%;text-align:center;"><a href="#" style="color:#003C9D;font-weight:bold;">其他題庫</a></li>
-
-      </ul>
-
-    </div>
-    -->
+ 
 
 <section id="main-content">
   <p>
   <section class="wrapper site-min-height">
-   <div>
+
     <div style="text-align:right;">
 <!--
 
@@ -214,7 +156,7 @@
         <p>
 
     </div>
-  </div>
+
 
     <div id="mainpage-2" style="background: #ECEFF1">
     <div class="col-md-12">
@@ -262,25 +204,32 @@
 </section>
 </section>
 <script>
+  var signoutSmtBtn = document.getElementById("signoutSmtBtn");
   // Script to open and close sidebar
-  function open_menu() {
-      document.getElementById("mySidebar").style.display = "block";
-  }
+   window.onload = function() {
+            var myLi = document.getElementById("signoutSmtBtn").getElementsByTagName('li');
 
-  function close_menu() {
-      document.getElementById("mySidebar").style.display = "none";
-  }
-
+            var calls = [];
+            calls[0] = function() { document.getElementById("logoutDiv").style.display = "block"; document.getElementById("loginDiv").style.display = "none";};
+            calls[1] = function() { document.getElementById("loginDiv").style.display = "block"; document.getElementById("logoutDiv").style.display = "none";};
+            
+            for (i = 0; i < 2; i++) {
+                
+                myLi[i].addEventListener('click', calls[i], false);
+            }
+        };
   firebase.auth().onAuthStateChanged(function(user) {
         var username = document.getElementById("username");
         var signoutSmtBtn = document.getElementById("signoutSmtBtn");
-        if (user) {
+       if (user) {
+            document.getElementById("loginDiv").style.display = "none";
+            document.getElementById("logoutDiv").style.display = "block";
             //sign out
             signoutSmtBtn.addEventListener("click",function(){
                 firebase.auth().signOut().then(function() {
                   console.log("User sign out!");
                   alert("登出成功");
-                  window.location.href = 'mainpage-2.html';
+                 // window.location.href = 'blank.html';
                 }, function(error) {
                   console.log("User sign out error!");
                   alert("登出失敗");
@@ -293,9 +242,10 @@
           });
         }
         else{
-          signoutSmtBtn.addEventListener("click",function(){
-            window.location.href = 'login.html';
-          });
+            document.getElementById("loginDiv").style.display = "block";
+            document.getElementById("logoutDiv").style.display = "none";
+            document.getElementById("personalPage").style.pointerEvents = "none";
+           
 
           //window.location.href = 'login.html';
           username.textContent = "未登入";
