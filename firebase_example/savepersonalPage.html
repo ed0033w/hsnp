@@ -156,10 +156,10 @@
         <div class="primary col-md-12 col-sm-12 col-xs-12">
             <section class="latest section">  
                 <div class="container  sections-wrapper section-inner ">                       
-                    <img class="profile-image img-responsive pull-left  col-md-3 col-sm-12 col-xs-12" src="head.jpg" style="border-radius:20px;" width="28%" height="42%">
+                    <img class="profile-image img-responsive pull-left  col-md-3 col-sm-12 col-xs-12" src="head.jpg" style="border-radius:20px;" width="200" height="300"/>
                     <div class="profile-content pull-left col-md-8 col-sm-12 col-xs-12">
-                        <h1 class="name" id="name">Little Bear</h1>
-                        <h2 class="desc" id="grade">延平高中 二年級</h2>   
+                        <h1 class="name " >Little Bear</h1>
+                        <h2 class="desc" >延平高中 二年級</h2>   
                     </div><!--//profile-->
                  </div><!--//container-->
             </section>
@@ -168,23 +168,22 @@
      <div class="container sections-wrapper">
         <div class="row">
             <div class="primary col-md-8 col-sm-12 col-xs-12">
-               <section id="article" class="latest section">
-                    <div v-for="card in questionCards" class="section-inner">
-                        <h2 class="heading" style="float:right;">{{card.date}}</h2>
+               <section class="latest section">
+                    <div class="section-inner">
+                        <h2 class="heading">數學&nbsp&nbsp2017/3/24</h2>
                         <div class="content">    
                                                
                             <div class="item featured text-left">
-                                <h3 class="title" style="color:black;">{{card.subject}}</h3>
-                                <br>
-                                <h3 class="title" style="color:black;">{{card.range}}</h3>
+                                <h3 class="title" style="color:black;">高二&nbsp&nbsp 三角函數</h3>
                                 <br>
                                 <div class="">
-                                    <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
+                                    <img src="math.png" style="border:0px gray solid;" width="500" height="300">
                                 </div>
                                     
                                 <div class="desc text-left">
                                     <h3>說明</h3>                                   
-                                    <p>{{card.question_text}}</p>
+                                    <p>我不能理解第三行算式為什麼會產生cot？</p>
+                                    <p>還有最後為什麼要取那樣的值？</p>
                                 </div><!--//desc-->                          
                             </div><!--//item-->
                             <hr class="divider" />
@@ -228,9 +227,9 @@
                         <h2 class="heading sr-only">Basic Information</h2>
                         <div class="content">
                             <ul class="list-unstyled">
-                                <li id="location"><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>Taipei, Taiwan</li>
-                                <li id="email"><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">littlebear@gmail.com</a></li>
-                                <li id="major"><i class="fa fa-pencil"></i><span class="sr-only">Website:</span>國文</li>
+                                <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>Taipei, Taiwan</li>
+                                <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">littlebear@gmail.com</a></li>
+                                <li><i class="fa fa-pencil"></i><span class="sr-only">Website:</span>國文</li>
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -240,13 +239,13 @@
                     <div class="section-inner">
                         <h2 class="heading">My prize</h2>
                         <div class="content">     
-                            <h3 id="ask">我愛發問：&nbsp&nbsp53題</h3>
-                            <h3 id="answer">熱心助人：&nbsp&nbsp34題</h3>   
+                            <h3>我愛發問：&nbsp&nbsp53題</h3>
+                            <h3>熱心助人：&nbsp&nbsp34題</h3>   
                             <br>             
                             <div class="skillset">
                                
                                 <div class="item">
-                                    <h3 class="level-title" id="experience">經驗值:&nbsp&nbsp87%<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to add more info...">Expert</span></h3>
+                                    <h3 class="level-title">經驗值:&nbsp&nbsp87%<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to add more info...">Expert</span></h3>
                                     <div class="level-bar">
                                         <div class="level-bar-inner" data-level="87%">
                                         </div>                                      
@@ -309,6 +308,8 @@
         var photo = document.getElementById("photo");
         var username = document.getElementById("username");
         var grade = document.getElementById("grade");
+        var date = document.getElementById("date");
+        var subject = document.getElementById("subject");
         var location = document.getElementById("location");
         var email = document.getElementById("email");
         var major = document.getElementById("major");
