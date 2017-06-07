@@ -308,7 +308,7 @@
         //下面是個人頁面變數，但不包含動態產生的部分，例如文章、筆記等
         var username = document.getElementById("username");
         var photo = document.getElementById("photo");
-        var username = document.getElementById("name");
+        var name = document.getElementById("name");
         var grade = document.getElementById("grade");
         var location = document.getElementById("location");
         var email = document.getElementById("email");
@@ -347,13 +347,13 @@
 
             firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
             console.log(snapshot.val().username);
-            username.textContent = snapshot.val().username + " " + snapshot.val().grade + " " + snapshot.val().sub;
+            username.textContent = snapshot.val().username;
             //讀取個人網頁名字
             console.log(snapshot.val().username);
             name.textContent = snapshot.val().username;
             //讀取年級+學校
             console.log(snapshot.val().username);
-            grade.textContent = snapshot.val().sub;
+            grade.textContent = snapshot.val().grade;
             /*
             //讀取地址、信箱、擅長科目、發問、回答、經驗值
             console.log(snapshot.val().username);
