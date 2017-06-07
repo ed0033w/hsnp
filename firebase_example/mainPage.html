@@ -145,18 +145,21 @@
 
 <section id="main-content" style="background-color:lightgray;">
   <section class="wrapper site-min-height">
+ <!--
     <div style="text-align:right;">
     <br>
         <button type="button" class="btn btn-round btn-info">我要發問</button>
         <p>
     </div>
+  -->
        <section id="article" class="latest section">
-         <div class="col s12">
-           <div class="col-md-4">
-              <div class="content ">
-        <div v-for="card in questionCards" class="section-inner row">
-         <h2 class="heading" style="float:right;">{{card.date}}</h2>
-           <div class="item featured text-left">
+
+           <div class="col-md-12 col-sm-4 ">
+            <div class="content">
+              <div v-for="card in questionCards" class="section-mainpage ">
+
+              <h2 class="heading" style="float:right;">{{card.date}}</h2>
+               <div class="item featured text-left">
                  <h3 class="title" style="color:black;">{{card.subject}}</h3>
                  <br>
                  <h3 class="title" style="color:black;">{{card.theme}}</h3>
@@ -164,9 +167,12 @@
                  <div class="">
                      <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
                  </div>
-           </div><!--//item-->
+               </div><!--//item-->
 
-             </div><!--//section-inner-->
+               <div class="col-md-1">
+               </div>
+            </div><!--//section-inner-->
+
            </div><!--//content-->
           </div>
 
@@ -202,9 +208,11 @@
         </template>
   </section>
 -->
+<!--
   <tr>
     <td><center><input type="button" value="上一頁" onclick="history.back()">&nbsp&nbsp<input type="button" value="下一頁" onclick="history.forward()"></center></td>
   </tr>
+-->
  </div>
 </section>
 <!--main content end-->
