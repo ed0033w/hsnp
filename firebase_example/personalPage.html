@@ -176,7 +176,7 @@
                             <div class="item featured text-left">
                                 <h3 class="title" style="color:black;">{{card.subject}}</h3>
                                 <br>
-                                <h3 class="title" style="color:black;">{{card.range}}</h3>
+                                <h3 class="title" style="color:black;">{{card.theme}}</h3>
                                 <br>
                                 <div class="">
                                     <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
@@ -301,7 +301,7 @@
 
     <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
-
+    
     <!--script for this page-->
     <script>
     firebase.auth().onAuthStateChanged(function(user) {
@@ -344,6 +344,7 @@
                 })
             },false);
 
+
             firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
             console.log(snapshot.val().username);
             username.textContent = snapshot.val().username + " " + snapshot.val().grade + " " + snapshot.val().sub;
@@ -385,7 +386,7 @@
   </script> 
   <!-- 動態產生文章 -->
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="./personalpage.js"></script>
+  <script src="./personalpage_new.js"></script>
    
  
   </body>
