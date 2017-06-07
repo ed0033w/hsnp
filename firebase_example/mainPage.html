@@ -254,7 +254,7 @@
 
             firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
             console.log(snapshot.val().username);
-            username.textContent = snapshot.val().username + " " + snapshot.val().grade + " " + snapshot.val().sub;
+            username.textContent = snapshot.val().username;
           });
         }
         else{
