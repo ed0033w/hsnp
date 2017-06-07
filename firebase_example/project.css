@@ -1,17 +1,17 @@
 body {
-    
+
 }
 .top{
-    padding-top:16px; 
-    padding-left:16px; 
-    padding-bottom:20px; 
+    padding-top:16px;
+    padding-left:16px;
+    padding-bottom:20px;
     padding-right:16px;
-   
-    
+
+
 }
 .personal_content{
     text-align: right;
-    
+
 }
 
 
@@ -22,17 +22,17 @@ body {
     text-align: left;
 }
 .article {
-    
+
     width: 280px;
     background:#f2f2f2;
     vertical-align: middle;
 }
 .top_searchbox{
-    padding-top:20px; 
-    
-   
-   
-    
+    padding-top:20px;
+
+
+
+
 }
 .button {
   display: inline-block;
@@ -79,7 +79,7 @@ body {
   width: 90%;
   table-layout: fixed;
   overflow: hidden;
-  
+
 }
 
 .pic{
@@ -89,7 +89,7 @@ body {
 
 .ability{
   margin-top: -55px;
-  margin-left: 65px; 
+  margin-left: 65px;
   border-radius: 30px;
 }
 
@@ -120,7 +120,7 @@ body {
 
 .note{
   margin-top: 30px;
-  margin-left: 60px; 
+  margin-left: 60px;
 }
 
 .menu{
@@ -129,4 +129,3 @@ body {
   background-color:#009688;
   border: 0px;
 }
-

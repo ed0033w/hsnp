@@ -27,6 +27,7 @@
   <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/style-responsive.css" rel="stylesheet">
+  <link href="assets/css/fuck.css" rel="stylesheet">
 
   <script src="assets/js/chart-master/Chart.js"></script>
   <!--Import Google Icon Font-->
@@ -141,26 +142,45 @@
 
 
 
-<section id="main-content">
 
+<section id="main-content" style="background-color:lightgray;">
   <section class="wrapper site-min-height">
-
     <div style="text-align:right;">
     <br>
         <button type="button" class="btn btn-round btn-info">我要發問</button>
         <p>
     </div>
+       <section id="article" class="latest section">
+         <div class="col s12">
+           <div class="col-md-4">
+              <div class="content ">
+        <div v-for="card in questionCards" class="section-inner row">
+         <h2 class="heading" style="float:right;">{{card.date}}</h2>
+           <div class="item featured text-left">
+                 <h3 class="title" style="color:black;">{{card.subject}}</h3>
+                 <br>
+                 <h3 class="title" style="color:black;">{{card.theme}}</h3>
+                 <br>
+                 <div class="">
+                     <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
+                 </div>
+           </div><!--//item-->
 
+             </div><!--//section-inner-->
+           </div><!--//content-->
+          </div>
 
-    <div id="mainpage-2" style="background: #ECEFF1">
-    <div class="col-md-12">
-
-      <template v-for="(card, index) in questionCards" class="row">
+      </section>
+   </section>
+</section>
+<!--
+  <section id="article" class="latest section" style="border-radius:10px;">
+      <template v-for="(card, index) in questionCards" class="row " >
           <div class="col s12">
             <div class="col-md-4">
-              <div class="showback" style="background-color:#CCCCCC;">
+              <div class="container " >
 
-            <div class="card" >
+            <div class="card content" >
               <div class="card-image">
                 <img :src="card.img">
                 <span class="card-title">{{card.title}}</span>
@@ -180,23 +200,15 @@
           </div>
           </div>
         </template>
-
-
-
-
-    </div>
-    </div>
-      <tr>
-       <td><center><input type="button" value="上一頁" onclick="history.back()">&nbsp&nbsp<input type="button" value="下一頁" onclick="history.forward()"></center></td>
-     </tr>
-
- </section>
-
+  </section>
+-->
+  <tr>
+    <td><center><input type="button" value="上一頁" onclick="history.back()">&nbsp&nbsp<input type="button" value="下一頁" onclick="history.forward()"></center></td>
+  </tr>
+ </div>
 </section>
 <!--main content end-->
 
-</div>
-</section>
 
 
 <script>
@@ -268,7 +280,9 @@
 
 <script type="text/javascript" src="./node_modules/materialize-css/dist/js/materialize.min.js"></script>
 
+
 <script src="./mainpage-2.js"></script>
+
 
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.js"></script>

@@ -1,3 +1,15 @@
+firebase.database().ref('/posts/test').once('value').then(function(snapshot) {
+
+
+var article = new Vue({
+  el: '#article',
+  data: {
+    questionCards: snapshot.val()
+  }
+})
+
+});
+
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
 
@@ -9,10 +21,39 @@ const routes = [
 const router = new VueRouter({
   routes: routes
 })
+/*
+var result = new Array();
 
-var app = new Vue({
+firebase.auth().onAuthStateChanged(function(user) {
+
+    if(user){
+
+
+
+      /*  firebase.database().ref('/posts/test').orderByChild("uid").equalTo(user.uid).on("child_added",function(snapshot) {
+
+        //console.log(snapshot.val());
+        //console.log(JSON.stringify(snapshot.val()))
+
+        result.push(snapshot.val());
+
+
+    });
+
+    var article = new Vue({
+        el: '#article',
+        data: {
+            questionCards: result
+        }
+        })
+    }
+
+});
+
+*/
+/*var app = new Vue({
     router,
-    el: '#mainpage-2',
+    el: '#mainpage',
     data: {
         questionCards: [{
             fid: 1,
@@ -70,7 +111,9 @@ var app = new Vue({
             img: 'images/mainpage-2-problem.jpg',
             content: '請救救我這幾何變態問題',
             unliked: true
-        }],
+        }]
+      //  questionCards: result
+        ,
 
     },
     methods: {
@@ -80,3 +123,4 @@ var app = new Vue({
         }
     }
 }).$mount('#mainpage-2')
+*/
