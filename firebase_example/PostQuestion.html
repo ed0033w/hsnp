@@ -70,10 +70,10 @@
             <a href="index.html" class="logo"><b>HSNP</b></a>
             <!--logo end-->
             
-              <div class="top-menu">
+         <div class="top-menu">
             	<ul class="nav pull-right top-menu" id="signoutSmtBtn">
                     <li><a class="logout" href="" id= "logoutDiv">Logout</a></li>
-                    <li><a class="logout" href="" id= "loginDiv">Login</a></li>
+                    <li><a class="logout" href="login.html" id= "loginDiv">Login</a></li>
             	</ul>
                 
                     
@@ -255,7 +255,31 @@
      
       var question_text = document.getElementById("question_text");
     firebase.auth().onAuthStateChanged(function(user) {
+         window.onload = function() {
+            var myLi = document.getElementById("signoutSmtBtn").getElementsByTagName('li');
+
+            var calls = [];
+            calls[0] = function() { document.getElementById("logoutDiv").style.display = "block"; document.getElementById("loginDiv").style.display = "none";};
+            calls[1] = function() { document.getElementById("loginDiv").style.display = "block"; document.getElementById("logoutDiv").style.display = "none";};
+            
+            for (i = 0; i < 2; i++) {
+                
+                myLi[i].addEventListener('click', calls[i], false);
+            }
+        };
   if (user) {
+       document.getElementById("loginDiv").style.display = "none";
+            document.getElementById("logoutDiv").style.display = "block";
+             signoutSmtBtn.addEventListener("click",function(){
+                firebase.auth().signOut().then(function() {
+                  console.log("User sign out!");
+                  alert("登出成功");
+                 // window.location.href = 'blank.html';
+                }, function(error) {
+                  console.log("User sign out error!");
+                  alert("登出失敗");
+                })
+            },false);
     // User is signed in.
         User = firebase.auth().currentUser;
         postbtn.addEventListener("click", function(){
@@ -287,6 +311,14 @@
             });
 
     })
+ }
+ else{
+       document.getElementById("loginDiv").style.display = "block";
+            document.getElementById("logoutDiv").style.display = "none";
+            document.getElementById("personalPage").style.pointerEvents = "none"; 
+               username.textContent = "未登入";
+          document.getElementById("signout").textContent = "登入"
+          console.log("User is not logined yet.");
  }
 }); 
 
