@@ -1,4 +1,4 @@
-firebase.database().ref('/posts/test').once('value').then(function(snapshot) {
+firebase.database().ref('/posts/').once('value').then(function(snapshot) {
 
 
 var article = new Vue({

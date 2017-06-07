@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -73,7 +73,7 @@
               <div class="top-menu">
             	<ul class="nav pull-right top-menu" id="signoutSmtBtn">
                     <li><a class="logout" href="" id= "logoutDiv">Logout</a></li>
-                    <li><a class="logout" href="login.html" id= "loginDiv">Login</a></li>
+                    <li><a class="logout" href="" id= "loginDiv">Login</a></li>
             	</ul>
                 
                     
@@ -196,7 +196,7 @@
                                 <div class="form-group has-warning">
                                     <div class="col-sm-2  col-lg-2 text-center" >Problem Image</div>
                                         <div class="col-lg-9">
-                                        <input type = "file" name "YouFile" id="img">
+                                        <input type = "file" name="file" id="file">
                                     </div>
                                 </div>
                                 <br><br>
@@ -236,31 +236,62 @@
       var postbtn = document.getElementById("postbtn");
       var author = document.getElementById("author");
       var theme = document.getElementById("theme");
-      var x = document.getElementById("subject").selectedIndex;
-      var subject = document.getElementById("subject").options[x].text;
-      var question_text = document.getElementById("question_text")
-      var img = document.getElementById("img")
-      
+
+    //   var filename;
+
+       var storageRef = firebase.storage().ref();
+    //     function handlefileselect(evt){
+    //     var file = evt.target.files[0];
+    //     var metedata={contentType: file.type};
+    //     storageRef.child('public/'+file.name).put(file,metedata).then(function(snapshot){
+    //         console.log('上傳完成',snapshot);})
+    //         .catch(function(error){
+    //             console.error('上傳失敗:',error);
+    //     });
+    // }
+    // window.addEventListener('load',function(){
+    //     document.getElementById('file').addEventListener('change',handlefileselect);
+    // });
      
-        
-        
-
-
+      var question_text = document.getElementById("question_text");
     firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
         User = firebase.auth().currentUser;
         postbtn.addEventListener("click", function(){
-        firebase.database().ref('posts/' + User.uid).set({
-          author: author.value,
-          theme: theme.value,
-          subject: subject,
-          question_text : question_text.value
-        });
-        console.log('登入成功');
-  })
-}
+            var file = document.getElementById('file').files[0];
+            var metedata={contentType: file.type};
+
+
+            storageRef.child('/users/' + user.uid + '/' + file.name).put(file,metedata).then(function(snapshot){
+                console.log('上傳完成'+snapshot);
+                storageRef.child('/users/' + user.uid + '/' + file.name).getDownloadURL().then(function(url){
+                    console.log(url);
+                    var x = document.getElementById("subject").selectedIndex;
+                    var subject = document.getElementById("subject").options[x].text;
+                    firebase.database().ref('/posts').push({
+                        uid: User.uid,
+                        img: url,
+                        author: author.value,
+                        theme: theme.value,
+                        subject: subject,
+                        question_text : question_text.value
+                    }).then(function(){
+                        window.location.href = 'mainPage.html';
+                    });
+                });
+                
+            })
+                .catch(function(error){
+                    console.error('上傳失敗:',error);
+            });
+
+    })
+ }
 }); 
+
+
+    
         
         
     </script>

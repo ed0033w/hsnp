@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if(user){
         
 
-        firebase.database().ref('/posts/test').orderByChild("uid").equalTo(user.uid).on("child_added",function(snapshot) {
+        firebase.database().ref('/posts').orderByChild("uid").equalTo(user.uid).on("child_added",function(snapshot) {
 
         //console.log(snapshot.val());
         //console.log(JSON.stringify(snapshot.val()))
