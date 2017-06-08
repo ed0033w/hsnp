@@ -353,15 +353,15 @@
             name.textContent = snapshot.val().username;
             //讀取年級+學校
             console.log(snapshot.val().username);
-            grade.textContent = snapshot.val().grade;
+            grade.textContent = snapshot.val().grade + " " + snapshot.val().sub;
+            
+            //major.textContent = snapshot.val().sub;
             /*
             //讀取地址、信箱、擅長科目、發問、回答、經驗值
             console.log(snapshot.val().username);
             location.textContent = snapshot.val().location;
             console.log(snapshot.val().username);
             email.textContent = snapshot.val().email;
-            console.log(snapshot.val().username);
-            major.textContent = snapshot.val().sub;
             console.log(snapshot.val().username);
             ask.textContent = snapshot.val().ask;
             console.log(snapshot.val().username);

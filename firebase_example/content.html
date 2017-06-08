@@ -176,35 +176,24 @@
                                 </div><!--//desc-->                          
                             </div><!--//item-->
                             <hr class="divider" />
-                            <div class="item row">
-                                <div class="col-md-2 col-sm-2 col-xs-12 text-center">
-                                    <img class="img-responsive" width="100" height="100" src="head1.jpg" style="display:block; margin:auto;">
-                                    <h4>王大寶</h4>
-                                </div>
-                                <div class="desc col-md-10 col-sm-10 col-xs-12">
-                                    <h3 class="title">這題超簡單</h3>
-                                    <p style="font-size:15px;">You can put one of your secondary projects here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis.</p>
-                                    <button style="border-style:none; background-color:white;"><i class="fa fa-heart"></i></button>
-                                    <nobr>145</nobr>
-                                    <button style="border-style:none; background-color:white;"><i class="fa fa-times"></i></button>
-                                    <nobr>12</nobr>
-                                </div><!--//desc-->                          
-                            </div><!--//item-->
-                            
-                            <div class="item row">
-                                <div class="col-md-2 col-sm-2 col-xs-12 text-center">
-                                    <img class="img-responsive" width="100" height="100" src="head2.jpg" style="display:block; margin:auto;">
-                                    <h4>陳大哥</h4>
-                                </div>
-                                <div class="desc col-md-10 col-sm-10 col-xs-12">
-                                    <h3 class="title">跟我這樣做</h3>
-                                    <p style="font-size:15px;">You can put one of your secondary projects here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis.</p>
-                                    <button style="border-style:none; background-color:white;"><i class="fa fa-heart"></i></button>
-                                    <nobr>14</nobr>
-                                    <button style="border-style:none; background-color:white;"><i class="fa fa-times"></i></button>
-                                    <nobr>89</nobr>
-                                </div><!--//desc-->                          
-                            </div><!--//item-->
+
+                            <!--動態生成回答-->
+                            <section id="article">
+                                <div class="item row" v-for="card in questionCards">
+                                    <div class="col-md-2 col-sm-2 col-xs-12 text-center">
+                                        <img class="img-responsive" width="100" height="100" src="head1.jpg" style="display:block; margin:auto;">
+                                        <h4>王大寶</h4>
+                                    </div>
+                                    <div class="desc col-md-10 col-sm-10 col-xs-12">
+                                        <h3 class="title">{{card.answer_theme}}</h3>
+                                        <p style="font-size:15px;">{{card.answer_text}}</p>
+                                        <button style="border-style:none; background-color:white;"><i class="fa fa-heart"></i></button>
+                                        <nobr>145</nobr>
+                                        <button style="border-style:none; background-color:white;"><i class="fa fa-times"></i></button>
+                                        <nobr>12</nobr>
+                                    </div><!--//desc-->                          
+                                </div><!--//item-->
+                            </section>
 
                             <div class="item row">
                                 <div class="col-md-2 col-sm-2 col-xs-12 text-center">
@@ -212,10 +201,13 @@
                                     <h4>陳大哥</h4>
                                 </div>
                                 <div class="desc col-md-10 col-sm-10 col-xs-12">
-                                    <textarea rows="1" cols="80">主旨</textarea>
-                                    <textarea rows="3" cols="100">內容</textarea>
-                                    <br>
-                                    <button class="but">發送</button>
+                                    <div class="form-group has-warning">
+                                        <input type="text" class="form-control" id="answer_theme">
+                                    </div>
+                                    <div class="form-group has-warning">
+                                        <textarea rows="4" cols="60" placeholder="Content" id="answer_text"></textarea>
+                                    </div>
+                                    <button class="but" id="answer_postbtn">發送</button>
                                 </div><!--//desc-->                          
                             </div><!--//item-->
 
@@ -249,22 +241,30 @@
     <script src="assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
-    <script>
+    <script language="javascript">
+      var answer_postbtn = document.getElementById("answer_postbtn");
+      var answer_text = document.getElementById("answer_text");
+      var answer_theme = document.getElementById("answer_theme");
+
+    //   var filename;
+
+       var storageRef = firebase.storage().ref();
+    //     function handlefileselect(evt){
+    //     var file = evt.target.files[0];
+    //     var metedata={contentType: file.type};
+    //     storageRef.child('public/'+file.name).put(file,metedata).then(function(snapshot){
+    //         console.log('上傳完成',snapshot);})
+    //         .catch(function(error){
+    //             console.error('上傳失敗:',error);
+    //     });
+    // }
+    // window.addEventListener('load',function(){
+    //     document.getElementById('file').addEventListener('change',handlefileselect);
+    // });
+     
+      var question_text = document.getElementById("question_text");
     firebase.auth().onAuthStateChanged(function(user) {
-        //下面是個人頁面變數，但不包含動態產生的部分，例如文章、筆記等
-        var photo = document.getElementById("photo");
-        var username = document.getElementById("username");
-        var grade = document.getElementById("grade");
-        var date = document.getElementById("date");
-        var subject = document.getElementById("subject");
-        var location = document.getElementById("location");
-        var email = document.getElementById("email");
-        var major = document.getElementById("major");
-        var ask = document.getElementById("ask");
-        var answer = document.getElementById("answer");
-        var experience = document.getElementById("experience");
-       // var signoutSmtBtn = document.getElementById("signoutSmtBtn");
-          window.onload = function() {
+         window.onload = function() {
             var myLi = document.getElementById("signoutSmtBtn").getElementsByTagName('li');
 
             var calls = [];
@@ -276,41 +276,53 @@
                 myLi[i].addEventListener('click', calls[i], false);
             }
         };
-        if (user) {
-              document.getElementById("loginDiv").style.display = "none";
+  if (user) {
+       document.getElementById("loginDiv").style.display = "none";
             document.getElementById("logoutDiv").style.display = "block";
-            //sign out
-          /*  signoutSmtBtn.addEventListener("click",function(){
+             signoutSmtBtn.addEventListener("click",function(){
                 firebase.auth().signOut().then(function() {
                   console.log("User sign out!");
                   alert("登出成功");
-                  window.location.href = 'blank.html';
+                 // window.location.href = 'blank.html';
                 }, function(error) {
                   console.log("User sign out error!");
                   alert("登出失敗");
                 })
-            },false);*/
+            },false);
+    // User is signed in.
+        User = firebase.auth().currentUser;
+        answer_postbtn.addEventListener("click", function(){
+            firebase.database().ref('/posts/-Km2IOlax46t1jiJ58n3/reply').push({
+                uid: User.uid,
+                answer_theme: answer_theme.value,
+                answer_text : answer_text.value
+            }).then(function(){
+                window.location.href = 'content.html';
+            });
+                
+        }).catch(function(error){
+                console.error('上傳失敗:',error);
+            });
 
-            firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
-            console.log(snapshot.val().username);
-            username.textContent = snapshot.val().username + " " + snapshot.val().grade + " " + snapshot.val().sub;
-          });
-        }
-        else{
-             document.getElementById("loginDiv").style.display = "block";
+ }
+ else{
+       document.getElementById("loginDiv").style.display = "block";
             document.getElementById("logoutDiv").style.display = "none";
-            document.getElementById("personalPage").style.pointerEvents = "none";
-         /* signoutSmtBtn.addEventListener("click",function(){
-            window.location.href = 'login.html';
-          });*/
-
-          //window.location.href = 'login.html';
-          username.textContent = "未登入";
+            document.getElementById("personalPage").style.pointerEvents = "none"; 
+               username.textContent = "未登入";
           document.getElementById("signout").textContent = "登入"
           console.log("User is not logined yet.");
-        }
-  });
-  </script>
+ }
+}); 
+
+
+    
+        
+        
+    </script>
+    <!-- 動態產生文章 -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="./content.js"></script>
 
   </body>
 </html>
