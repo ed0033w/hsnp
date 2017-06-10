@@ -95,21 +95,21 @@
               	  <h5 class="centered" id="username">qww</h5>
               	  	
                   <li class="mt">
-                      <a href="mainPage.html">
+                      <a href="">
                           <i class="fa "></i>
                           <span>mainpage</span>
                       </a>
                   </li>
 
-                  <li class="sub-menu" >
-                      <a href="personalPage.html"  id = "personalPage">
+                  <li class="sub-menu">
+                      <a href="" >
                           <i class="fa "></i>
                           <span>personal page</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="PostQuestion.html" >
+                      <a href="" >
                           <i class="fa"></i>
                           <span>post question</span>
                       </a>
@@ -157,26 +157,26 @@
 
            <div class="primary col-md-10 col-sm-12 col-xs-12">
                <section class="latest section">
-                    <div class="section-inner" >
+                    <div class="section-inner">
+                        <h2 class="heading" id="date" style="float:right;">2017/6/24</h2>
+                        <h2 class="heading" id="subject">數學</h2>
 
                         <div class="content">    
                                                
-                            <div class="item featured text-left" id="articleCard">
-                                <h2 class="heading" id="date" style="float:right;">2017/6/24</h2>
-                                <h2 class="heading" id="subject">{{questionCards.subject}}</h2>
-                                <h3 class="title" id="range" style="color:black;">{{questionCards.theme}}</h3>
+                            <div class="item featured text-left">
+                                <h3 class="title" id="range" style="color:black;">三角函數</h3>
                                 <br>
                                 <div class="">
-                                    <img id="question_img" :src="questionCards.img" style="border:0px gray solid;" width="70%" height="42%">
+                                    <img id="question_img" src="math.png" style="border:0px gray solid;" width="70%" height="42%">
                                 </div>
                                     
                                 <div class="desc text-left">
                                     <h3>說明</h3>                                   
-                                    <p id="question_text" style="font-size:15px;">{{questionCards.question_text}}</p>
+                                    <p id="question_text" style="font-size:15px;">我不能理解第三行算式為什麼會產生cot，還有最後為什麼要取那樣的值？</p>
                                 </div><!--//desc-->                          
                             </div><!--//item-->
                             <hr class="divider" />
-                                
+
                             <!--動態生成回答-->
                             <section id="replyCard">
                                 <div class="item row" v-for="card in questionCards">
@@ -245,21 +245,6 @@
       var answer_postbtn = document.getElementById("answer_postbtn");
       var answer_text = document.getElementById("answer_text");
       var answer_theme = document.getElementById("answer_theme");
-      var strUrl = location.search;
-      var getPara, ParaVal;
-      var aryPara = [];
-
-      if (strUrl.indexOf("?") != -1) {
-        var getSearch = strUrl.split("?");
-        getPara = getSearch[1].split("&");
-        for (i = 0; i < getPara.length; i++) {
-            ParaVal = getPara[i].split("=");
-            aryPara.push(ParaVal[0]);
-            aryPara[ParaVal[0]] = ParaVal[1];
-        }
-        console.log(aryPara.id);
-      }
-      
 
     //   var filename;
 
@@ -305,32 +290,30 @@
                 })
             },false);
     // User is signed in.
-        
         User = firebase.auth().currentUser;
         answer_postbtn.addEventListener("click", function(){
-            console.log("TEST");
-            firebase.database().ref('/posts/'+aryPara.id+'/reply').push({
+            firebase.database().ref('/posts/-Km2IOlax46t1jiJ58n3/reply').push({
                 uid: User.uid,
                 answer_theme: answer_theme.value,
                 answer_text : answer_text.value
             }).then(function(){
-                window.location.href = 'content.html?id='+aryPara.id;
-            }).catch(function(error){
-                console.error('上傳失敗:',error);
+                window.location.href = 'content.html';
             });
                 
-        })
+        }).catch(function(error){
+                console.error('上傳失敗:',error);
+            });
 
-        }
-        else{
-            document.getElementById("loginDiv").style.display = "block";
-                    document.getElementById("logoutDiv").style.display = "none";
-                    document.getElementById("personalPage").style.pointerEvents = "none"; 
-                    username.textContent = "未登入";
-                document.getElementById("signout").textContent = "登入"
-                console.log("User is not logined yet.");
-        }
-        }); 
+ }
+ else{
+       document.getElementById("loginDiv").style.display = "block";
+            document.getElementById("logoutDiv").style.display = "none";
+            document.getElementById("personalPage").style.pointerEvents = "none"; 
+               username.textContent = "未登入";
+          document.getElementById("signout").textContent = "登入"
+          console.log("User is not logined yet.");
+ }
+}); 
 
 
     
