@@ -1,5 +1,17 @@
-﻿
+
 <html lang="en">
+<SCRIPT ID=clientEventHandlersJS LANGUAGE=javascript>
+
+function btnDivShow_onclick() {
+	div1.style.display='';
+}
+
+function btnDivH_onclick() {
+	div1.style.display='none';
+}
+
+</SCRIPT>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -189,8 +201,10 @@
                                                 </select>
                                     </div>
                                 </div>
+                                <a id="a1" href="javascript:;" onclick="change()">檢視</a><br>
+                                <div id="d1" style="display: none">
                                 <div class="form-group has-warning">
-                                    <div class="col-sm-2  col-lg-2 text-center" >OCR Image</div>
+                                    <div class="col-sm-2  col-lg-2 text-center">OCR Image</div>
                                     <div class="col-lg-9">
                                         <input type = "file" name="fileOCR" id="fileOCR">
                                     </div>
@@ -198,6 +212,7 @@
                                 <div class="form-group has-warning">
                                     <center><img id="input" src="" width="400px"/></center>
                                 </div>
+                                </div> 
                                 <div class="form-group has-warning">
                                     <div class="col-sm-2  col-lg-2 text-center" >Your Problem</div>
                                         <div class="col-lg-9">
@@ -382,5 +397,20 @@
         
         
     </script>
+    <script>
+var isShow = false;
+function change() {
+	if(!isShow) {
+		isShow = true;
+		document.getElementById('d1').style.display='';
+		document.getElementById('a1').innerText = "隱藏";
+	}
+	else {
+		isShow = false;
+		document.getElementById('d1').style.display='none';
+		document.getElementById('a1').innerText = "檢視";
+	}			
+}
+</script>
   </body>
 </html>
