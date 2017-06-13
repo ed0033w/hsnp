@@ -1,5 +1,16 @@
-﻿
 <html lang="en">
+<SCRIPT ID=clientEventHandlersJS LANGUAGE=javascript>
+
+function btnDivShow_onclick() {
+	div1.style.display='';
+}
+
+function btnDivH_onclick() {
+	div1.style.display='none';
+}
+
+</SCRIPT>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -189,6 +200,18 @@
                                                 </select>
                                     </div>
                                 </div>
+                                <a id="a1" href="javascript:;" onclick="change()">檢視</a><br>
+                                <div id="d1" style="display: none">
+                                <div class="form-group has-warning">
+                                    <div class="col-sm-2  col-lg-2 text-center">OCR Image</div>
+                                    <div class="col-lg-9">
+                                        <input type = "file" name="fileOCR" id="fileOCR">
+                                    </div>
+                                </div>
+                                <div class="form-group has-warning">
+                                    <center><img id="input" src="" width="400px"/></center>
+                                </div>
+                                </div> 
                                 <div class="form-group has-warning">
                                     <div class="col-sm-2  col-lg-2 text-center" >OCR Image</div>
                                     <div class="col-lg-9">
@@ -321,32 +344,49 @@
     // User is signed in.
         User = firebase.auth().currentUser;
         postbtn.addEventListener("click", function(){
+
             var file = document.getElementById('file').files[0];
-            var metedata={contentType: file.type};
-
-
-            storageRef.child('/users/' + user.uid + '/' + file.name).put(file,metedata).then(function(snapshot){
-                console.log('上傳完成'+snapshot);
-                storageRef.child('/users/' + user.uid + '/' + file.name).getDownloadURL().then(function(url){
-                    console.log(url);
-                    var x = document.getElementById("subject").selectedIndex;
-                    var subject = document.getElementById("subject").options[x].text;
-                    firebase.database().ref('/posts').push({
-                        uid: User.uid,
-                        img: url,
-                        author: author.value,
-                        theme: theme.value,
-                        subject: subject,
-                        question_text : question_text.value
-                    }).then(function(){
-                        window.location.href = 'mainPage.html';
+            if(file){
+                var metedata={contentType: file.type};
+                storageRef.child('/users/' + user.uid + '/' + file.name).put(file,metedata).then(function(snapshot){
+                    console.log('上傳完成'+snapshot);
+                    storageRef.child('/users/' + user.uid + '/' + file.name).getDownloadURL().then(function(url){
+                        console.log(url);
+                        var x = document.getElementById("subject").selectedIndex;
+                        var subject = document.getElementById("subject").options[x].text;
+                        var newPostRef = firebase.database().ref('/posts').push(); // To get post id key.
+                        newPostRef.set({
+                            uid: User.uid,
+                            id: newPostRef.key,
+                            img: url,
+                            author: author.value,
+                            theme: theme.value,
+                            subject: subject,
+                            question_text : question_text.value
+                        }).then(function(){
+                            window.location.href = 'mainPage.html';
+                        });
                     });
+                    
+                })
+                    .catch(function(error){
+                        console.error('上傳失敗:',error);
                 });
-                
-            })
-                .catch(function(error){
-                    console.error('上傳失敗:',error);
-            });
+            }else{
+                var x = document.getElementById("subject").selectedIndex;
+                var subject = document.getElementById("subject").options[x].text;
+                var newPostRef = firebase.database().ref('/posts').push(); // To get post id key.
+                newPostRef.set({
+                    uid: User.uid,
+                    id: newPostRef.key,
+                    author: author.value,
+                    theme: theme.value,
+                    subject: subject,
+                    question_text : question_text.value
+                }).then(function(){
+                    window.location.href = 'mainPage.html';
+                });
+            }
 
     })
  }
@@ -365,5 +405,20 @@
         
         
     </script>
+    <script>
+var isShow = false;
+function change() {
+	if(!isShow) {
+		isShow = true;
+		document.getElementById('d1').style.display='';
+		document.getElementById('a1').innerText = "隱藏";
+	}
+	else {
+		isShow = false;
+		document.getElementById('d1').style.display='none';
+		document.getElementById('a1').innerText = "檢視";
+	}			
+}
+</script>
   </body>
 </html>
