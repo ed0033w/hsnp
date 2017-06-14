@@ -171,7 +171,9 @@
                 
                 <section id="article" class="latest section">
                     <div v-for="card in questionCards" class="section-inner">
-                        <button :onclick="'firebase.database().ref(\'/posts/'+card.id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'">delete</button>
+                        <button :onclick="'firebase.database().ref(\'/posts/'+card.id+').remove().then(function(){
+                            window.location.href = \'personalPage.html\';
+                            });'">delete</button>
                         <br>
                         <h2 class="heading">2017/6/15</h2>
                         <div class="content">    
@@ -320,12 +322,12 @@
 
             //delete the article
             User = firebase.auth().currentUser;
-            /*deleteBtn.addEventListener("click", function(){
+            deleteBtn.addEventListener("click", function(){
                 //console.log("1234567890");
                 firebase.database().ref('/posts/-Km2IOlax46t1jiJ58n3').remove().then(function(){
                     window.location.href = 'personalPage.html';
                 });
-            })*/
+            })
 
             firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
             console.log(snapshot.val().username);
