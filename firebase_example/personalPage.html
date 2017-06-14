@@ -277,6 +277,18 @@
     
     <!--script for this page-->
     <script>
+           window.onload = function() {
+            var myLi = document.getElementById("signoutSmtBtn").getElementsByTagName('li');
+
+            var calls = [];
+            calls[0] = function() { document.getElementById("logoutDiv").style.display = "block"; document.getElementById("loginDiv").style.display = "none";};
+            calls[1] = function() { document.getElementById("loginDiv").style.display = "block"; document.getElementById("logoutDiv").style.display = "none";};
+
+            for (i = 0; i < 2; i++) {
+
+                myLi[i].addEventListener('click', calls[i], false);
+            }
+        };
     firebase.auth().onAuthStateChanged(function(user) {
         //下面是個人頁面變數，但不包含動態產生的部分，例如文章、筆記等
         var username = document.getElementById("username");
