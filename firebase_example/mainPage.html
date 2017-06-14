@@ -155,24 +155,25 @@
        <section id="article" class="latest section">
 
            <div class="col-md-12 col-sm-4 ">
-            <div class="content">
               <div v-for="card in questionCards" class="section-mainpage " style="cursor:pointer;" :onclick="'location.href=\'./content.html?id='+card.id+'\';'">
                 <h2 class="heading" style="float:right;">{{card.date}}</h2>
                 <div class="item featured text-left">
                     <h3 class="title" style="color:black;">{{card.subject}}</h3>
                     <br>
-                    <h3 class="title" style="color:black;">{{card.theme}}</h3>
+                    <h3 class="title mainpage-theme" style="color:black;">{{card.theme}}</h3>
                     <br>
-                    <div class="">
-                        <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
+                    <div class="mainpage-img">
+                        <img :src="card.img" style="border:0px gray solid; width:200px;
+                        height:200px;" >
                     </div>
+                    <h4 class="title mainpage-likes" style=""align="right">{{card.likes}}&nbsp;Likes!</h3>
                 </div><!--//item-->
 
                <div class="col-md-1">
                </div>
             </div><!--//section-inner-->
 
-           </div><!--//content-->
+
           </div>
 
       </section>
