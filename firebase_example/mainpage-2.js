@@ -1,17 +1,21 @@
 
-
-
+var postList = [];
 
 firebase.database().ref('/posts/').once('value').then(function(snapshot) {
+    snapshot.forEach(function(element) {
+        const p = element.val();
+        console.log(p.author);
+        postList.push(p);
+    });
+    postList.reverse();
+});
 
 var article = new Vue({
   el: '#article',
   data: {
-    questionCards: snapshot.val()
+    questionCards: postList
   }
 })
-
-});
 
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
