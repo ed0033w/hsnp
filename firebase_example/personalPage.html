@@ -170,7 +170,9 @@
             <div class="primary col-md-8 col-sm-12 col-xs-12">
                <section id="article" class="latest section">
                     <div v-for="card in questionCards" class="section-inner">
-                        <h2 class="heading" style="float:right;">{{card.date}}</h2>
+                        
+                        <br>
+                        <h2 class="heading">2017/6/15</h2>
                         <div class="content">    
                                                
                             <div class="item featured text-left">
@@ -187,40 +189,11 @@
                                     <p>{{card.question_text}}</p>
                                 </div><!--//desc-->                          
                             </div><!--//item-->
-                            <hr class="divider" />
-                            <div class="item row">
-                                <div class="col-md-2 col-sm-2 col-xs-12 text-center">
-                                    <img class="img-responsive" width="100" height="100" src="head1.jpg"/>
-                                    <h4>王大寶</h4>
-                                </div>
-                                <div class="desc col-md-10 col-sm-10 col-xs-12">
-                                    <h3 class="title">這題超簡單</h3>
-                                    <p>You can put one of your secondary projects here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis.</p>
-                                    <button style="border-style:none; background-color:white;"><i class="fa fa-heart"></i></button>
-                                    <nobr>145</nobr>
-                                    <button style="border-style:none; background-color:white;"><i class="fa fa-times"></i></button>
-                                    <nobr>12</nobr>
-                                </div><!--//desc-->                          
-                            </div><!--//item-->
-                            
-                            <div class="item row">
-                                <div class="col-md-2 col-sm-2 col-xs-12 text-center">
-                                    <img class="img-responsive" width="100" height="100" src="head2.jpg"/>
-                                    <h4>陳大哥</h4>
-                                </div>
-                                <div class="desc col-md-10 col-sm-10 col-xs-12">
-                                    <h3 class="title">跟我這樣做</h3>
-                                    <p>You can put one of your secondary projects here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis.</p>
-                                    <button style="border-style:none; background-color:white;"><i class="fa fa-heart"></i></button>
-                                    <nobr>14</nobr>
-                                    <button style="border-style:none; background-color:white;"><i class="fa fa-times"></i></button>
-                                    <nobr>89</nobr>
-                                </div><!--//desc-->                          
-                            </div><!--//item-->
                             
                         </div><!--//content-->  
-                    </div><!--//section-inner-->                 
+                    </div><!--//section-inner-->               
                 </section><!--//section-->
+                <button id="deleteBtn">delete</button>
             </div><!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
@@ -317,6 +290,7 @@
         var answer = document.getElementById("answer");
         var experience = document.getElementById("experience");
         var signoutSmtBtn = document.getElementById("signoutSmtBtn");
+        var deleteBtn = document.getElementById("deleteBtn");
         window.onload = function() {
             var myLi = document.getElementById("signoutSmtBtn").getElementsByTagName('li');
 
@@ -344,6 +318,13 @@
                 })
             },false);
 
+            //delete the article
+            User = firebase.auth().currentUser;
+            deleteBtn.addEventListener("click", function(){
+                console.log("1234567890");
+                firebase.database().ref('/posts/-Km2IOlax46t1jiJ58n3').remove();
+                    
+            })
 
             firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
             console.log(snapshot.val().username);
