@@ -578,3 +578,22 @@ padding-top: 8px;
   .but:hover{
     background-color: #3e8e41;
   }
+
+  .butd{
+    background-color: white; /* Green */
+    border-color: black;
+    border-width: 0px;
+    padding: 0px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float:right;
+    border-radius: 2px;
+  }
+
+  .butd:hover{
+    background-color: black;
+    color: white;
+  }

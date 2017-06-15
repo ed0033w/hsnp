@@ -182,15 +182,16 @@
                                 <div class="item row" v-for="card in questionCards">
                                     <div class="col-md-2 col-sm-2 col-xs-12 text-center">
                                         <img class="img-responsive" width="100" height="100" src="head1.jpg" style="display:block; margin:auto;">
-                                        <h4>王大寶</h4>
+                                        <h4>{{card.replyname}}</h4>
                                     </div>
                                     <div class="desc col-md-10 col-sm-10 col-xs-12">
-                                        <h3 class="title">{{card.answer_theme}}</h3>
-                                        <p style="font-size:15px;">{{card.answer_text}}</p>
-                                        <button style="border-style:none; background-color:white;"><i class="fa fa-heart"></i></button>
-                                        <nobr>145</nobr>
-                                        <button style="border-style:none; background-color:white;"><i class="fa fa-times"></i></button>
-                                        <nobr>12</nobr>
+                                            <button :onclick="'firebase.database().ref(\'/posts/'+card.article_id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'" class="butd">x</button>
+                                            <h3 class="title">{{card.answer_theme}}</h3>
+                                            <p style="font-size:15px;">{{card.answer_text}}</p>
+                                            <button style="border-style:none; background-color:white;"><i class="fa fa-heart"></i></button>
+                                            <nobr>145</nobr>
+                                            <button style="border-style:none; background-color:white;"><i class="fa fa-times"></i></button>
+                                            <nobr>12</nobr> 
                                     </div><!--//desc-->                          
                                 </div><!--//item-->
                             </section>
@@ -198,7 +199,7 @@
                             <div class="item row">
                                 <div class="col-md-2 col-sm-2 col-xs-12 text-center">
                                     <img class="img-responsive" width="100" height="100" src="head2.jpg" style="display:block; margin:auto;">
-                                    <h4>陳大哥</h4>
+                                    <h4 id="replyname">無名</h4>
                                 </div>
                                 <div class="desc col-md-10 col-sm-10 col-xs-12">
                                     <div class="form-group has-warning">
@@ -245,6 +246,7 @@
       var answer_postbtn = document.getElementById("answer_postbtn");
       var answer_text = document.getElementById("answer_text");
       var answer_theme = document.getElementById("answer_theme");
+      var replyname = document.getElementById("replyname");
       var strUrl = location.search;
       var getPara, ParaVal;
       var aryPara = [];
@@ -304,15 +306,34 @@
                   alert("登出失敗");
                 })
             },false);
+
+    //reply part
+
+        firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+            replyname.textContent = snapshot.val().username;
+        });
+
     // User is signed in.
         
         User = firebase.auth().currentUser;
         answer_postbtn.addEventListener("click", function(){
             console.log("TEST");
-            firebase.database().ref('/posts/'+aryPara.id+'/reply').push({
+            var newPostRef = firebase.database().ref('/posts/'+aryPara.id+'/reply').push(); // To get reply id key.
+            /*firebase.database().ref('/posts/'+aryPara.id+'/reply').push({
                 uid: User.uid,
+                article_id: aryPara.id,
+                reply_id: newPostRef.key,
                 answer_theme: answer_theme.value,
-                answer_text : answer_text.value
+                answer_text : answer_text.value,
+                replyname: replyname.textContent
+            })*/
+            newPostRef.set({
+                uid: User.uid, //使用者ID
+                article_id: aryPara.id, //文章ID
+                reply_id: newPostRef.key,   //此回覆ID
+                answer_theme: answer_theme.value,
+                answer_text : answer_text.value,
+                replyname: replyname.textContent
             }).then(function(){
                 window.location.href = 'content.html?id='+aryPara.id;
             }).catch(function(error){

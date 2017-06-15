@@ -171,7 +171,7 @@
                 
                 <section id="article" class="latest section">
                     <div v-for="card in questionCards" class="section-inner">
-                        <button :onclick="'firebase.database().ref(\'/posts/'+card.id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'">delete</button>
+                        <button :onclick="'firebase.database().ref(\'/posts/'+card.id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'" class="butd">x</button>
                         <br>
                         <h2 class="heading">2017/6/15</h2>
                         <div class="content">    
