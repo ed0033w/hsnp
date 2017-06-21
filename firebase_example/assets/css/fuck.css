@@ -597,3 +597,22 @@ padding-top: 8px;
     background-color: black;
     color: white;
   }
+
+.butc{
+    margin-top: 10px;
+    background-color: #f4bc42; /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+  }
+
+  .butc:hover{
+    background-color: yellow;
+  }

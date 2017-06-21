@@ -156,10 +156,13 @@
         <div class="primary col-md-12 col-sm-12 col-xs-12">
             <section class="latest section">  
                 <div class="container  sections-wrapper section-inner ">                       
-                    <img class="profile-image img-responsive pull-left  col-md-3 col-sm-12 col-xs-12" src="head.jpg" style="border-radius:20px;" width="28%" height="42%">
+                    <img class="profile-image img-responsive pull-left  col-md-3 col-sm-12 col-xs-12" src="startimg.jpg" style="border-radius:20px;" width="28%" height="42%" id="headimg">
                     <div class="profile-content pull-left col-md-8 col-sm-12 col-xs-12">
                         <h1 class="name" id="name">Little Bear</h1>
-                        <h2 class="desc" id="grade">延平高中 二年級</h2>   
+                        <h2 class="desc" id="grade">延平高中 二年級</h2>
+                        <br><br><br><br><br><br>
+                        <input type="file" name="file" id="file">
+                        <button id="changephoto" class="butc">更換相片</button> 
                     </div><!--//profile-->
                  </div><!--//container-->
             </section>
@@ -171,7 +174,8 @@
                 
                 <section id="article" class="latest section">
                     <div v-for="card in questionCards" class="section-inner">
-                        <button :onclick="'firebase.database().ref(\'/posts/'+card.id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'" class="butd">x</button>
+                        <!--button :onclick="'firebase.database().ref(\'/posts/'+card.id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'" class="butd">x</button-->
+                        <button class="butd" v-on:click="cancel">x</button>
                         <br>
                         <h2 class="heading">2017/6/15</h2>
                         <div class="content">    
@@ -280,7 +284,8 @@
     firebase.auth().onAuthStateChanged(function(user) {
         //下面是個人頁面變數，但不包含動態產生的部分，例如文章、筆記等
         var username = document.getElementById("username");
-        var photo = document.getElementById("photo");
+        var headimg = document.getElementById("headimg");
+        var changephoto = document.getElementById("changephoto");
         var name = document.getElementById("name");
         var grade = document.getElementById("grade");
         var location = document.getElementById("location");
@@ -328,30 +333,58 @@
             })*/
 
             firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
-            console.log(snapshot.val().username);
-            username.textContent = snapshot.val().username;
-            //讀取個人網頁名字
-            console.log(snapshot.val().username);
-            name.textContent = snapshot.val().username;
-            //讀取年級+學校
-            console.log(snapshot.val().username);
-            grade.textContent = snapshot.val().grade + " " + snapshot.val().sub;
             
-            //major.textContent = snapshot.val().sub;
-            /*
-            //讀取地址、信箱、擅長科目、發問、回答、經驗值
-            console.log(snapshot.val().username);
-            location.textContent = snapshot.val().location;
-            console.log(snapshot.val().username);
-            email.textContent = snapshot.val().email;
-            console.log(snapshot.val().username);
-            ask.textContent = snapshot.val().ask;
-            console.log(snapshot.val().username);
-            answer.textContent = snapshot.val().answer;
-            console.log(snapshot.val().username);
-            experience.textContent = snapshot.val().experience;
-            */
-          });
+                username.textContent = snapshot.val().username;
+                //讀取個人網頁名字
+                name.textContent = snapshot.val().username;
+                //讀取年級+學校
+                grade.textContent = snapshot.val().grade + " " + snapshot.val().sub;
+                //讀取頭貼
+                headimg.src = snapshot.val().headimg;
+
+                //major.textContent = snapshot.val().sub;
+                /*
+                //讀取地址、信箱、擅長科目、發問、回答、經驗值
+                console.log(snapshot.val().username);
+                location.textContent = snapshot.val().location;
+                console.log(snapshot.val().username);
+                email.textContent = snapshot.val().email;
+                console.log(snapshot.val().username);
+                ask.textContent = snapshot.val().ask;
+                console.log(snapshot.val().username);
+                answer.textContent = snapshot.val().answer;
+                console.log(snapshot.val().username);
+                experience.textContent = snapshot.val().experience;
+                */
+            });
+
+            //更換頭貼
+            
+            var storageRef = firebase.storage().ref();
+            changephoto.addEventListener("click", function(){
+
+                var file = document.getElementById('file').files[0];
+                if(file){
+                    var metedata={contentType: file.type};
+                    storageRef.child('/users/' + user.uid + '/' + file.name).put(file,metedata).then(function(snapshot){
+                        console.log('上傳完成'+snapshot);
+                        storageRef.child('/users/' + user.uid + '/' + file.name).getDownloadURL().then(function(url){
+                            console.log(url);
+                            
+                            firebase.database().ref('users/' + User.uid).update({
+                                headimg: url,
+                            }).then(function(){
+                                
+                                window.location.href = 'personalPage.html';
+                            });
+                        });
+                        
+                    })
+                        .catch(function(error){
+                            console.error('上傳失敗:',error);
+                    });
+                }
+            })
         }
         else{
             document.getElementById("loginDiv").style.display = "block";
