@@ -177,7 +177,7 @@ iframe {
   border-radius: 10px;
   margin-top: 25px;
   margin-bottom: 20px;
-  width: 350px;
+  width: 700px;
   height: 350px;
   display:inline-block;
   margin-left: 20px;
@@ -596,4 +596,23 @@ padding-top: 8px;
   .butd:hover{
     background-color: black;
     color: white;
+  }
+
+.butc{
+    margin-top: 10px;
+    background-color: #f4bc42; /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+  }
+
+  .butc:hover{
+    background-color: yellow;
   }
