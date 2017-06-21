@@ -324,6 +324,7 @@
 
         firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
             replyname.textContent = snapshot.val().username;
+            username.textContent = snapshot.val().username;
             //讀取頭貼
                 if(snapshot.val().headimg){
                     headimg.src = snapshot.val().headimg;
