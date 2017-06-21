@@ -98,15 +98,8 @@ firebase.database().ref('/posts/'+aryPara.id+'/reply').once('value').then(functi
     }*/
 
 
-<<<<<<< HEAD
-function share(){
-  FB.ui({
-    method: 'share',
-    display: 'popup',
-    href: location.href,
-  }, function(response){});
-}
-=======
+
+
     /*var replyCard = new Vue({
         el: '#replyCard',
         data: {
@@ -123,4 +116,11 @@ function share(){
       });*/
 
   });
->>>>>>> 525d7c3a77fd77ae1e1cd9436e52f80b413417d9
+  
+function share(){
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: location.href,
+  }, function(response){});
+}
