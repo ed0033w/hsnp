@@ -67,7 +67,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="mainPage.html" class="logo"><b>HSNP</b></a>
+           <a href="mainPage.html" class="logo"><img src="hsnp.png" class="logo" width="40" style="margin-bottom: 5px"><b>HSNP</b></a>
             <!--logo end-->
             
             <div class="top-menu">
@@ -91,8 +91,8 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered" id="username">qww</h5>
+              	  <p class="centered"><a href="profile.html"><img src="hsnpw.jpg" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered" id="username"></h5>
               	  	
                   <li class="mt">
                       <a href="mainPage.html">
@@ -156,7 +156,7 @@
         <div class="primary col-md-12 col-sm-12 col-xs-12">
             <section class="latest section">  
                 <div class="container  sections-wrapper section-inner ">                       
-                    <img class="profile-image img-responsive pull-left  col-md-3 col-sm-12 col-xs-12" src="startimg.jpg" style="border-radius:20px;" width="28%" height="42%" id="headimg">
+                    <img class="profile-image img-responsive pull-left  col-md-3 col-sm-12 col-xs-12" src="hsnpw.jpg" style="border-radius:20px;" width="28%" height="42%" id="headimg">
                     <div class="profile-content pull-left col-md-8 col-sm-12 col-xs-12">
                         <h1 class="name" id="name">Little Bear</h1>
                         <h2 class="desc" id="grade">延平高中 二年級</h2>
@@ -173,29 +173,32 @@
             <div class="primary col-md-8 col-sm-12 col-xs-12">
                 
                 <section id="article" class="latest section">
-                    <div v-for="card in questionCards" class="section-inner">
+                    <div v-for="card in questionCards" class="section-inner" style="cursor:pointer;">
                         <!--button :onclick="'firebase.database().ref(\'/posts/'+card.id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'" class="butd">x</button-->
                         <button class="butd" @click= "deletePost(card.id)" >刪除貼文</button>
+
                         <br>
-                        <h2 class="heading">2017/6/15</h2>
-                        <div class="content">    
-                                               
-                            <div class="item featured text-left">
-                                <h3 class="title" style="color:black;">{{card.subject}}</h3>
-                                <br>
-                                <h3 class="title" style="color:black;">{{card.theme}}</h3>
-                                <br>
-                                <div class="">
-                                    <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
-                                </div>
-                                    
-                                <div class="desc text-left">
-                                    <h3>說明</h3>                                   
-                                    <p>{{card.question_text}}</p>
-                                </div><!--//desc-->                          
-                            </div><!--//item-->
-                            
-                        </div><!--//content-->  
+                        <span :onclick="'location.href=\'./content.html?id='+card.id+'\';'">
+                            <h2 class="heading">2017/6/15</h2>
+                            <div class="content">    
+                                                
+                                <div class="item featured text-left">
+                                    <h3 class="title" style="color:black;">{{card.subject}}</h3>
+                                    <br>
+                                    <h3 class="title" style="color:black;">{{card.theme}}</h3>
+                                    <br>
+                                    <div class="">
+                                        <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
+                                    </div>
+                                        
+                                    <div class="desc text-left">
+                                        <h3>說明</h3>                                   
+                                        <p>{{card.question_text}}</p>
+                                    </div><!--//desc-->                          
+                                </div><!--//item-->
+                                
+                            </div><!--//content-->  
+                        <span>
                     </div><!--//section-inner-->               
                 </section><!--//section-->
             </div><!--//primary-->
