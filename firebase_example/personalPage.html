@@ -276,7 +276,6 @@
     <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
 
     <!--common script for all pages-->
@@ -373,9 +372,9 @@
                 var file = document.getElementById('file').files[0];
                 if(file){
                     var metedata={contentType: file.type};
-                    storageRef.child('/users/' + user.uid + '/' + file.name).put(file,metedata).then(function(snapshot){
+                    storageRef.child('/users/' + user.uid + '/' + user.uid + '.jpg').put(file,metedata).then(function(snapshot){
                         console.log('上傳完成'+snapshot);
-                        storageRef.child('/users/' + user.uid + '/' + file.name).getDownloadURL().then(function(url){
+                        storageRef.child('/users/' + user.uid + '/' + user.uid + '.jpg').getDownloadURL().then(function(url){
                             console.log(url);
                             
                             firebase.database().ref('users/' + User.uid).update({
