@@ -27,3 +27,4 @@ firebase.database().ref('/posts/'+aryPara.id+'/reply').once('value').then(functi
       });
 
   });
+

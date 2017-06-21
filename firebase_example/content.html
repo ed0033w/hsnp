@@ -60,6 +60,26 @@
 
   <body>
 
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId            : '1907047162897287',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
   <section id="container" >
     
       <header class="header black-bg">
@@ -165,6 +185,9 @@
                                 <h2 class="heading" id="date" style="float:right;">2017/6/24</h2>
                                 <h2 class="heading" id="subject">{{questionCards.subject}}</h2>
                                 <h3 class="title" id="range" style="color:black;">{{questionCards.theme}}</h3>
+                                <div>
+                                    <button class="but" id="share_postbtn" align="right">Share</button>
+                                </div>
                                 <br>
                                 <div class="">
                                     <img id="question_img" :src="questionCards.img" style="border:0px gray solid;" width="70%" height="42%">
@@ -306,6 +329,7 @@
                   alert("登出失敗");
                 })
             },false);
+            
 
     //reply part
 
@@ -351,7 +375,22 @@
                 document.getElementById("signout").textContent = "登入"
                 console.log("User is not logined yet.");
         }
+    }); 
+    document.getElementById('share_postbtn').onclick = function() {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                console.log('Logged in.');
+                FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: location.href,
+                }, function(response){});
+            }
+            else {
+                FB.login();
+            }
         }); 
+    }
 
 
     
