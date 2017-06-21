@@ -28,3 +28,10 @@ firebase.database().ref('/posts/'+aryPara.id+'/reply').once('value').then(functi
 
   });
 
+function share(){
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: location.href,
+  }, function(response){});
+}

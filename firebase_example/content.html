@@ -191,9 +191,8 @@
                                         <br><br>
                                         <h2 class="heading" id="author">{{questionCards.author}}</h2>
                                     </div>
-                                    <div>
-                                        <button class="but" id="share_postbtn">Share</button>
-                                    </div>
+                                    <button class="but" id="share_btn" onclick="share()">Share</button>
+                                
                                 </div>
                                 <!--h2 class="heading" id="date" style="float:right;">2017/6/24</h2-->
                                 <center>
@@ -278,7 +277,7 @@
     <!--script for this page-->
     <script language="javascript">
       var answer_postbtn = document.getElementById("answer_postbtn");
-      var FBshare_btn = document.getElementById('share_postbtn');
+      var share_btn = document.getElementById("share_btn");
       var answer_text = document.getElementById("answer_text");
       var answer_theme = document.getElementById("answer_theme");
       var replyname = document.getElementById("replyname");
@@ -286,6 +285,15 @@
       var getPara, ParaVal;
       var aryPara = [];
       var headimg = document.getElementById("headimg");
+
+      share_btn.onclick = function() {
+        console.log("yee");
+       /* FB.ui({
+            method: 'share',
+            display: 'popup',
+            href: 'https://hsnp-55606.firebaseapp.com/firebase_example/mainPage.html#/',
+        }, function(response){});*/
+    }
 
       
 
@@ -333,14 +341,7 @@
         };
   if (user) {
 
-        FBshare_btn.addEventListener("click" , function() {
-            console.log("I just fucking press the button OK?");
-            FB.ui({
-                method: 'share',
-                display: 'popup',
-                href: location.href,
-            }, function(response){});
-        })
+       
 
        document.getElementById("loginDiv").style.display = "none";
             document.getElementById("logoutDiv").style.display = "block";
