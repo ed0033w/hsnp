@@ -175,7 +175,7 @@
                 <section id="article" class="latest section">
                     <div v-for="card in questionCards" class="section-inner">
                         <!--button :onclick="'firebase.database().ref(\'/posts/'+card.id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'" class="butd">x</button-->
-                        <button class="butd" v-on:click="cancel">x</button>
+                        <button class="butd" @click= "deletePost(card.id)" >刪除貼文</button>
                         <br>
                         <h2 class="heading">2017/6/15</h2>
                         <div class="content">    
@@ -340,7 +340,11 @@
                 //讀取年級+學校
                 grade.textContent = snapshot.val().grade + " " + snapshot.val().sub;
                 //讀取頭貼
-                headimg.src = snapshot.val().headimg;
+                if(snapshot.val().headimg){
+                    headimg.src = snapshot.val().headimg;
+                }else{
+                    headimg.src = "startimg.jpg"
+                }
 
                 //major.textContent = snapshot.val().sub;
                 /*

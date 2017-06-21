@@ -23,9 +23,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                 questionCards: result
             },
             methods:{
-                cancel: function(){
+                deletePost: function(post){
                     //alert(this.id);
-                    firebase.database().ref('/posts/'+ this.id).remove().then(function(){
+                    firebase.database().ref('/posts/'+ post).remove().then(function(){
                         window.location.href = 'personalPage.html';
                     });
                 }
