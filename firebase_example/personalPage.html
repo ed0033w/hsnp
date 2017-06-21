@@ -173,29 +173,32 @@
             <div class="primary col-md-8 col-sm-12 col-xs-12">
                 
                 <section id="article" class="latest section">
-                    <div v-for="card in questionCards" class="section-inner">
+                    <div v-for="card in questionCards" class="section-inner" style="cursor:pointer;">
                         <!--button :onclick="'firebase.database().ref(\'/posts/'+card.id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'" class="butd">x</button-->
                         <button class="butd" @click= "deletePost(card.id)" >刪除貼文</button>
+
                         <br>
-                        <h2 class="heading">2017/6/15</h2>
-                        <div class="content">    
-                                               
-                            <div class="item featured text-left">
-                                <h3 class="title" style="color:black;">{{card.subject}}</h3>
-                                <br>
-                                <h3 class="title" style="color:black;">{{card.theme}}</h3>
-                                <br>
-                                <div class="">
-                                    <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
-                                </div>
-                                    
-                                <div class="desc text-left">
-                                    <h3>說明</h3>                                   
-                                    <p>{{card.question_text}}</p>
-                                </div><!--//desc-->                          
-                            </div><!--//item-->
-                            
-                        </div><!--//content-->  
+                        <span :onclick="'location.href=\'./content.html?id='+card.id+'\';'">
+                            <h2 class="heading">2017/6/15</h2>
+                            <div class="content">    
+                                                
+                                <div class="item featured text-left">
+                                    <h3 class="title" style="color:black;">{{card.subject}}</h3>
+                                    <br>
+                                    <h3 class="title" style="color:black;">{{card.theme}}</h3>
+                                    <br>
+                                    <div class="">
+                                        <img :src="card.img" style="border:0px gray solid;" width="70%" height="42%">
+                                    </div>
+                                        
+                                    <div class="desc text-left">
+                                        <h3>說明</h3>                                   
+                                        <p>{{card.question_text}}</p>
+                                    </div><!--//desc-->                          
+                                </div><!--//item-->
+                                
+                            </div><!--//content-->  
+                        <span>
                     </div><!--//section-inner-->               
                 </section><!--//section-->
             </div><!--//primary-->
