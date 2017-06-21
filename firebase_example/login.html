@@ -51,6 +51,8 @@
       <!--跳轉網頁-->
       <p class="submit"><input type="submit" value="SignUp" onclick="window.location.href = 'signup.html';"></p>
 
+      <p class="submit"><input type="submit" id="fbLoginBtn" name="sent" value="FACEBOOK Login"></p>
+
     </div>
   </div> <!--/ Login-->
 
@@ -82,6 +84,73 @@
         console.log("User is not logined yet.");
       }
   });
+
+//facebook login
+  var provider = new firebase.auth.FacebookAuthProvider();
+//所需授權的Scope 
+
+//查閱 https://developers.facebook.com/docs/facebook-login/permissions
+
+  provider.addScope('email');
+  provider.setCustomParameters({
+    'display': 'popup'
+  });
+
+
+  //使用Popup註冊FB方式
+
+  var fbLoginBtn = document.getElementById("fbLoginBtn");
+  fbLoginBtn.addEventListener("click",function(){
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      // 取得FB Token，可以使用於FB API中
+
+      var token = result.credential.accessToken;
+      // 使用者資料
+
+      var FBUser = result.user;
+      console.log(FBUser);
+    }).catch(function(error) {
+      //處理 帳號已經存在於其他登入方式時
+
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        //取得credential
+
+        var pendingCred = error.credential;
+        // The provider account's email address.
+
+        var email = error.email;
+        console.log("FB登入錯誤-使用者信箱：",email);
+        // 取得當初此Email的登入方式
+
+        firebase.auth().fetchProvidersForEmail(email).then(function(providers) {
+          // 如果使用者有多個登入方式的話
+
+          console.log("FB登入錯誤-其他登入方式：",providers);
+          if (providers[0] === 'password') {
+            // 如果使用者用密碼登入，要求使用者輸入密碼
+
+            var password = promptUserForPassword(); // TODO: 實作 promptUserForPassword.
+
+            firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
+
+              return user.link(pendingCred);
+            }).then(function() {
+              // 成功連結
+
+              goToApp();
+            });
+            return;
+          }
+        });
+      }
+    });
+    promptUserForPassword = function(){
+      var pwd = prompt("Please enter your password");
+      if (pwd != null) {
+        return pwd;
+      }
+    }
+  })
   </script>
   
 

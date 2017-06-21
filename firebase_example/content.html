@@ -60,6 +60,26 @@
 
   <body>
 
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId            : '1907047162897287',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
   <section id="container" >
     
       <header class="header black-bg">
@@ -162,6 +182,7 @@
                         <div class="content">    
                                                
                             <div class="item featured text-left" id="articleCard">
+
                                 <div class="col-md-12">
                                     <div class="col-md-3">
                                         <img :src="questionCards.headimg" width="80%" height="80%">
@@ -169,6 +190,9 @@
                                     <div class="col-md-9">    
                                         <br><br>
                                         <h2 class="heading" id="author">{{questionCards.author}}</h2>
+                                    </div>
+                                    <div>
+                                        <button class="but" id="share_postbtn">Share</button>
                                     </div>
                                 </div>
                                 <!--h2 class="heading" id="date" style="float:right;">2017/6/24</h2-->
@@ -262,6 +286,8 @@
       var aryPara = [];
       var headimg = document.getElementById("headimg");
 
+      
+
       if (strUrl.indexOf("?") != -1) {
         var getSearch = strUrl.split("?");
         getPara = getSearch[1].split("&");
@@ -306,7 +332,6 @@
         };
   if (user) {
 
-
        document.getElementById("loginDiv").style.display = "none";
             document.getElementById("logoutDiv").style.display = "block";
              signoutSmtBtn.addEventListener("click",function(){
@@ -319,6 +344,7 @@
                   alert("登出失敗");
                 })
             },false);
+            
 
     //reply part
 
@@ -360,7 +386,9 @@
                 
         })
 
-        }
+        
+
+    }
         else{
             document.getElementById("loginDiv").style.display = "block";
                     document.getElementById("logoutDiv").style.display = "none";
@@ -369,7 +397,8 @@
                 document.getElementById("signout").textContent = "登入"
                 console.log("User is not logined yet.");
         }
-        }); 
+    }); 
+
 
 
     
