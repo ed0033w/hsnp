@@ -164,7 +164,7 @@
                             <div class="item featured text-left" id="articleCard">
                                 <div class="col-md-12">
                                     <div class="col-md-3">
-                                        <img id="poster" src="startimg.jpg" width="80%" height="80%">
+                                        <img :src="questionCards.headimg" width="80%" height="80%">
                                     </div>
                                     <div class="col-md-9">    
                                         <br><br>
@@ -191,11 +191,11 @@
                             <section id="replyCard">
                                 <div class="item row" v-for="card in questionCards">
                                     <div class="col-md-2 col-sm-2 col-xs-12 text-center">
-                                        <img class="img-responsive" width="100" height="100" src="startimg.jpg" style="display:block; margin:auto;">
+                                        <img class="img-responsive" width="100" height="100" :src="card.headimg" style="display:block; margin:auto;">
                                         <h4>{{card.replyname}}</h4>
                                     </div>
                                     <div class="desc col-md-10 col-sm-10 col-xs-12">
-                                            <button :onclick="'firebase.database().ref(\'/posts/'+card.article_id+'\').remove().then(function(){window.location.href = \'personalPage.html\';});'" class="butd">x</button>
+                                            <button @click="deleteReply(card.article_id,card.reply_id)" class="butd">刪除回應</button>
                                             <h3 class="title">{{card.answer_theme}}</h3>
                                             <p style="font-size:15px;">{{card.answer_text}}</p>
                                             <button style="border-style:none; background-color:white;"><i class="fa fa-heart"></i></button>
@@ -328,8 +328,6 @@
             //讀取頭貼
                 if(snapshot.val().headimg){
                     headimg.src = snapshot.val().headimg;
-                }else{
-                    headimg.src = "startimg.jpg"
                 }
         });
 
