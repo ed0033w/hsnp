@@ -162,18 +162,28 @@
                         <div class="content">    
                                                
                             <div class="item featured text-left" id="articleCard">
-                                <h2 class="heading" id="date" style="float:right;">2017/6/24</h2>
-                                <h2 class="heading" id="subject">{{questionCards.subject}}</h2>
-                                <h3 class="title" id="range" style="color:black;">{{questionCards.theme}}</h3>
-                                <br>
-                                <div class="">
-                                    <img id="question_img" :src="questionCards.img" style="border:0px gray solid;" width="70%" height="42%">
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                        <img id="poster" src="startimg.jpg" width="80%" height="80%">
+                                    </div>
+                                    <div class="col-md-9">    
+                                        <br><br>
+                                        <h2 class="heading" id="author">{{questionCards.author}}</h2>
+                                    </div>
                                 </div>
-                                    
-                                <div class="desc text-left">
-                                    <h3>說明</h3>                                   
-                                    <p id="question_text" style="font-size:15px;">{{questionCards.question_text}}</p>
-                                </div><!--//desc-->                          
+                                <!--h2 class="heading" id="date" style="float:right;">2017/6/24</h2-->
+                                <center>
+                                        <h2 class="heading" id="subject">{{questionCards.subject}}</h2>
+                                        <h3 class="title" id="range" style="color:black;">{{questionCards.theme}}</h3>
+                                    <br>
+                                    <div class="">
+                                        <img id="question_img" :src="questionCards.img" style="border:0px gray solid;" width="70%" height="42%">
+                                    </div>    
+                                    <div class="desc">
+                                        <h3>說明</h3>                                   
+                                        <p id="question_text" style="font-size:15px;">{{questionCards.question_text}}</p>
+                                    </div><!--//desc-->  
+                                </center>                     
                             </div><!--//item-->
                             <hr class="divider" />
                                 
